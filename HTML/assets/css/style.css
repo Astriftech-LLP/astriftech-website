@@ -860,7 +860,7 @@ button {
     margin-left: 0px;
 }
 .site-branding .brand-logo{
-    max-width: 200px;
+    max-width: 140px;
 }
 .header-navigation .primary-menu{
     display: -webkit-box;
@@ -897,7 +897,7 @@ button {
     font-family: var(--rajdhani);
     text-transform: capitalize;
     font-weight: 700;
-    padding: 35px 18px;
+    padding: 25px 18px;
     line-height: 1;
 }
 .header-navigation .main-menu>ul>li>a:after{
@@ -1203,7 +1203,7 @@ button {
     border-bottom: none;
 }
 .navigation-style-v1 .primary-menu{
-    border-bottom: 1px solid rgba(25, 25, 25, 0.1);
+    border-bottom: none;
 }
 .navigation-style-v1 .container-fluid{
     padding-left: 70px;
