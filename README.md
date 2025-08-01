@@ -51,7 +51,7 @@ IN NO EVENT SHALL ASTRIFTECH LLP BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIAB
 
 ## Governing Law
 
-This license shall be governed by and construed in accordance with the laws of [Your Jurisdiction], without regard to its conflict of law provisions.
+This license shall be governed by and construed in accordance with the laws of Bangalore, India, without regard to its conflict of law provisions.
 
 ---
 
