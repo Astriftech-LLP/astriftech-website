@@ -5,7 +5,7 @@
     Author:  Wordpressriver
     Author URI: https://themeforest.net/user/wordpressriver
     Version: 1.0
-
+    color: var(--heading);
 ----------------------------------------------------------------------------------
     ===================
         CSS INDEX
@@ -55,11 +55,24 @@
 
 /* Root css */
 :root {
-	--text-color: #808285;
-	--heading: #191919;
+	--text-color: #4b5563; /* slate-600 */
+	--heading: #0f172a;    /* slate-900 */
     --blue-dark: #5956e9;
 	--light-gray: #fafafb;
 	--dmsans: 'DM Sans', sans-serif;
+
+    /* Theme tokens */
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --card: #ffffff;
+    --border: rgba(16, 24, 40, 0.12);
+    --link: #1f3fee;
+    --link-hover: #1240ff;
+
+    /* Brandful accents (light theme defaults) */
+    --accent-1: #5956e9; /* brand indigo */
+    --accent-2: #6ea8fe; /* sky */
+    --accent-3: #22d3ee; /* cyan */
 }
 *{
     margin: 0;
@@ -100,7 +113,7 @@ h3,
 h4,
 h5,
 h6{
-    color: #000000;
+    color: var(--heading);
     margin: 0px;
     font-family: var(--dmsans);
     font-weight: 700;
@@ -161,6 +174,185 @@ body {
 	font-size: 18px;
 	line-height: 32px;
 	overflow-x: hidden;
+    background: var(--bg);
+}
+
+/* Dark theme: brandful, colorful, not black */
+body.theme-dark {
+    --text-color: #cbd5e1; /* slate-300 */
+    --heading: #e5e7eb;    /* gray-200 */
+    --bg: radial-gradient(1200px 400px at 15% -10%, rgba(89,86,233,0.18) 0%, rgba(8,11,27,0) 55%),
+          linear-gradient(180deg, #0b1020 0%, #0a0f1d 100%);
+    --surface: #0f172a;
+    --card: #111827;
+    --border: rgba(148, 163, 184, 0.18);
+    --link: #8ab4ff;
+    --link-hover: #a5c6ff;
+
+    /* richer accents in dark */
+    --accent-1: #7a78ff; /* brighter indigo */
+    --accent-2: #60a5fa; /* sky-400 */
+    --accent-3: #06b6d4; /* cyan-500 */
+}
+
+/* Global element adjustments for dark */
+body.theme-dark .section-title .sub-title,
+body.theme-dark .blue-dark,
+body.theme-dark a.btn-link{
+    color: var(--accent-2);
+}
+/* Ensure strong contrast for primary buttons in dark mode */
+body.theme-dark .main-btn,
+body.theme-dark .arrow-btn{
+    color: #ffffff;
+}
+body.theme-dark .main-btn,
+body.theme-dark .bordered-btn{
+    background-color: var(--accent-1);
+    border-color: var(--accent-1);
+}
+/* Preserve readable hover state in dark mode */
+body.theme-dark .main-btn:hover{
+    background-color: #6f6cff; /* slightly brighter indigo */
+    color: #ffffff;
+}
+body.theme-dark .page-footer,
+body.theme-dark .light-gray-bg,
+body.theme-dark .service-area{
+    background: linear-gradient(180deg, #0b1020 0%, #0a0f1d 100%);
+}
+body.theme-dark .service-item{
+    background-color: var(--card);
+    border-color: var(--border);
+    box-shadow: 0 8px 32px rgba(2,6,23,0.5);
+}
+body.theme-dark .service-item::before{
+    background: var(--accent-2);
+}
+body.theme-dark .service-item .icon{
+    background: linear-gradient(135deg, rgba(32,119,255,0.18) 0%, rgba(32,119,255,0.07) 100%);
+    box-shadow: 0 10px 24px rgba(2,6,23,0.6);
+}
+body.theme-dark .service-item .text .list-style-two li::before{
+    background: rgba(96,165,250,0.25);
+    color: var(--accent-2);
+}
+body.theme-dark .service-item .btn-link{
+    color: var(--accent-2);
+    border-bottom-color: rgba(96,165,250,0.45);
+}
+/* Contact page – dark mode polishing */
+body.theme-dark .information-item{
+    background-color: var(--card);
+    border-color: var(--border);
+    -webkit-box-shadow: 0 10px 24px rgba(2,6,23,0.5);
+            box-shadow: 0 10px 24px rgba(2,6,23,0.5);
+}
+body.theme-dark .information-item .icon{
+    background: linear-gradient(135deg, rgba(32,119,255,0.22) 0%, rgba(32,119,255,0.10) 100%);
+    color: var(--accent-2);
+    border-color: rgba(96,165,250,0.35);
+}
+body.theme-dark .information-item:hover{
+    background-color: rgba(32,119,255,0.10);
+    border-color: rgba(96,165,250,0.45);
+}
+body.theme-dark .information-item:hover .info h4{
+    color: var(--heading);
+}
+body.theme-dark .information-item:hover .info p{
+    color: rgba(226,232,240,0.75);
+}
+
+/* Contact form fields */
+body.theme-dark .contact-form form .nice-select,
+body.theme-dark .contact-form form .form_control{
+    background: var(--surface);
+    color: var(--heading);
+    border-color: var(--border);
+}
+body.theme-dark .contact-form form .form_control::-webkit-input-placeholder,
+body.theme-dark .contact-form form .form_control::-moz-placeholder,
+body.theme-dark .contact-form form .form_control:-ms-input-placeholder,
+body.theme-dark .contact-form form .form_control::-ms-input-placeholder,
+body.theme-dark .contact-form form .form_control::placeholder{
+    color: rgba(203,213,225,0.75);
+}
+body.theme-dark .contact-form form .form_control:focus,
+body.theme-dark .contact-form form .nice-select:focus{
+    border-color: var(--accent-2);
+    -webkit-box-shadow: 0 0 0 3px rgba(96,165,250,0.25);
+            box-shadow: 0 0 0 3px rgba(96,165,250,0.25);
+}
+
+/* Contact wrapper variants using explicit white */
+body.theme-dark .contact-area-v2 .contact-wrapper{
+    background: var(--surface);
+}
+
+/* Footer newsletter input */
+body.theme-dark .footer-widget .widget.newsletter-widget .newsletter-content form .form_control{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--heading);
+}
+body.theme-dark .footer-widget .widget.newsletter-widget .newsletter-content form .form_control::placeholder{
+    color: rgba(203,213,225,0.75);
+}
+
+/* Map box as dark card */
+body.theme-dark .contact-info-v1 .map-box{
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    -webkit-box-shadow: 0 10px 24px rgba(2,6,23,0.5);
+            box-shadow: 0 10px 24px rgba(2,6,23,0.5);
+}
+body.theme-dark .contact-info-v1 .map-box iframe{
+    filter: saturate(105%);
+}
+
+/* Information item big icon tint */
+body.theme-dark .information-item:after{
+    color: rgba(148, 163, 184, 0.06);
+}
+body.theme-dark .header-navigation.navigation-style-v1{
+    background: rgba(8,12,24,0.35);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+            backdrop-filter: saturate(140%) blur(10px);
+}
+body.theme-dark .main-menu ul li a{
+    color: var(--heading);
+}
+body.theme-dark .main-menu ul li a.active,
+body.theme-dark .main-menu ul li a:hover{
+    color: var(--accent-2);
+}
+
+/* Toggle button */
+.theme-toggle{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--heading);
+    cursor: pointer;
+    transition: all .25s ease;
+}
+.theme-toggle:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(16,24,40,0.15);
+}
+body.theme-dark .theme-toggle{
+    background: #0b1224;
+    border-color: rgba(148,163,184,0.22);
+    color: var(--heading);
+    box-shadow: 0 8px 24px rgba(2,6,23,0.5);
 }
 .bg_cover {
 	background-position: center center;
@@ -825,6 +1017,10 @@ button {
 /*---==========================
    02. Start Header css 
 =========================---*/
+.header-area {
+    border-bottom: none !important;
+}
+
 .transparent-header {
     position: absolute;
     background-color: transparent;
@@ -832,12 +1028,17 @@ button {
     left: 0;
     width: 100%;
     z-index: 999;
+    border-bottom: none;
 }
 
 /* Header Navigation Default */
 .nav-ml-auto{
     margin-left: auto;
 }
+.header-area .header-navigation {
+    border-bottom: none;
+}
+
 .header-navigation .nav-overlay {
     position: fixed;
     top: 0;
@@ -860,7 +1061,13 @@ button {
     margin-left: 0px;
 }
 .site-branding .brand-logo{
-    max-width: 200px;
+    display: inline-block;
+    max-width: 115px; /* 15% larger than previous 100px */
+}
+.site-branding .brand-logo img{
+    width: 100%;
+    height: auto;
+    display: block;
 }
 .header-navigation .primary-menu{
     display: -webkit-box;
@@ -1203,7 +1410,7 @@ button {
     border-bottom: none;
 }
 .navigation-style-v1 .primary-menu{
-    border-bottom: 1px solid rgba(25, 25, 25, 0.1);
+    border-bottom: none;
 }
 .navigation-style-v1 .container-fluid{
     padding-left: 70px;
@@ -1303,7 +1510,7 @@ button {
     left: 0;
     right: 0;
     z-index: 999;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.8); /* 20% transparent look over background */
     -webkit-animation: sticky 1.2s;
     animation: sticky 1.2s;
     -webkit-box-shadow: 0px 10px 30px 0px rgb(110 104 162 / 10%);
@@ -1312,6 +1519,17 @@ button {
 .header-navigation.navigation-white.sticky{
     background-color: var(--heading);
 }
+
+/* Ensure nav never uses a gradient; keep transparent header behavior */
+body.theme-dark .blend-header .header-navigation,
+body.theme-dark .blend-header .header-navigation.sticky{
+    background: rgba(8,12,24,0.35); /* same as dark sticky glass */
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+            backdrop-filter: saturate(140%) blur(10px);
+}
+
+/* Light mode: inner hero banner should be white to match header */
+
 @-webkit-keyframes sticky {
     0% {
       top: -200px;
@@ -1391,11 +1609,15 @@ button {
     border-radius: 121px;
 }
 .hero-banner-v1 .hero-img.hero-img-two{
-    bottom: 80px;
+    bottom: 110px; /* 15% more up from 96px */
     right: 150px;
 }
 .hero-banner-v1 .hero-img.hero-img-two img{
     border-radius: 245px;
+}
+.hero-banner-v1 .hero-img.hero-img-two video{
+    border-radius: 245px;
+    transform: scale(1.15); /* 15% larger */
 }
 .hero-banner-v1 .hero-img.hero-img-three{
     bottom: 190px;
@@ -1806,31 +2028,71 @@ button {
     position: relative;
     z-index: 1;
     padding: 50px 55px 40px;
-    border-radius: 7px;
+    border-radius: 16px;
     background-color: #fff;
-    border: 1px solid rgba(88, 86, 233, 0.2);
-    -webkit-transition: all .3s;
-    -o-transition: all .3s;
-    transition: all .3s;
+    border: 1px solid rgba(88, 86, 233, 0.18);
+    box-shadow: 0 4px 18px rgba(16, 24, 40, 0.06);
+    -webkit-transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background-color .25s ease;
+    -o-transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background-color .25s ease;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background-color .25s ease;
+}
+.service-item::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    border-radius: 16px 16px 0 0;
+    background: var(--accent, var(--blue-dark));
 }
 .service-style-one:hover{
     background-color: #fff;
-    border-color: transparent;
-    -webkit-box-shadow: 0px 10px 60px 0px rgba(89, 86, 233, 0.1);
-            box-shadow: 0px 10px 60px 0px rgba(89, 86, 233, 0.1);
+    border-color: rgba(88, 86, 233, 0);
+    -webkit-box-shadow: 0px 18px 48px rgba(16, 24, 40, 0.12);
+            box-shadow: 0px 18px 48px rgba(16, 24, 40, 0.12);
+    -webkit-transform: translateY(-8px);
+        -ms-transform: translateY(-8px);
+            transform: translateY(-8px);
 }
 .service-item .icon{
-    margin-bottom: 10px;
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(88,86,233,0.12) 0%, rgba(88,86,233,0.04) 100%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    box-shadow: 0 10px 24px rgba(88,86,233,0.15);
 }
 .service-item .icon i{
-    font-size: 75px;
+    font-size: 36px;
     line-height: 1;
-    color: var(--blue-dark);
+    color: var(--accent, var(--blue-dark));
 }
 .service-item .text h3.title{
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     font-size: 24px;
     line-height: 35px;
+    position: relative;
+}
+.service-item .text h3.title::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--accent, var(--blue-dark));
+    margin-top: 10px;
+    opacity: .2;
+    -webkit-transition: width .25s ease, opacity .25s ease;
+    -o-transition: width .25s ease, opacity .25s ease;
+    transition: width .25s ease, opacity .25s ease;
+}
+.service-style-one:hover .text h3.title::after{
+    width: 100%;
+    opacity: .35;
 }
 .service-item .text p{
     margin-bottom: 10px;
@@ -1840,6 +2102,29 @@ button {
 }
 .service-item .text .list-style-two li{
     margin-bottom: 10px;
+    position: relative;
+    padding-left: 28px;
+}
+.service-item .text .list-style-two{
+    list-style: none;
+    margin: 0 0 16px 0;
+    padding: 0;
+}
+.service-item .text .list-style-two li::before{
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(88,86,233,0.12);
+    color: var(--accent, var(--blue-dark));
+    display: grid;
+    place-items: center;
+    font-size: 11px;
 }
 .service-area-v1 .service-wrapper{
     padding-left: 90px;
@@ -1901,6 +2186,123 @@ button {
 }
 .service-style-three:hover .text .btn-link-two:before{
     background-color: #fff;
+}
+/* Subtle section background for services */
+.service-area{
+    background: linear-gradient(180deg, #f7faff 0%, #ffffff 100%);
+}
+
+/* Equal-height cards: make the card stretch and the link stick to bottom visually */
+.service-area .row > [class*="col-"]{
+    display: flex;
+}
+.service-area .service-item{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.service-area .service-item .text{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1 1 auto;
+}
+.service-area .service-item .btn-link{
+    margin-top: auto;
+}
+
+/* Hover variants */
+.service-item.variant-light:hover{
+    background: #ffffff;
+}
+.service-item.variant-dark{
+    background: #0f172a; /* dark slate */
+    border-color: rgba(255,255,255,0.08);
+    color: #e2e8f0;
+}
+.service-item.variant-dark .icon{
+    background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 100%);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+.service-item.variant-dark .icon i,
+.service-item.variant-dark .text h3.title,
+.service-item.variant-dark .text p,
+.service-item.variant-dark .text .list-style-two li,
+.service-item.variant-dark .btn-link{
+    color: #e2e8f0;
+}
+.service-item.variant-dark .text h3.title::after{
+    background: linear-gradient(90deg, var(--accent, #60a5fa) 0%, #93c5fd 100%);
+    opacity: .5;
+}
+.service-item.variant-dark:hover{
+    -webkit-box-shadow: 0px 18px 48px rgba(2, 6, 23, 0.6);
+            box-shadow: 0px 18px 48px rgba(2, 6, 23, 0.6);
+    -webkit-transform: translateY(-8px);
+        -ms-transform: translateY(-8px);
+            transform: translateY(-8px);
+}
+.service-item.variant-dark .text .list-style-two li::before{
+    background: rgba(255,255,255,0.15);
+    color: var(--accent, #60a5fa);
+}
+.service-item.variant-dark .btn-link{
+    border-bottom-color: rgba(255,255,255,0.35);
+}
+.service-item.variant-dark:hover .btn-link{
+    border-bottom-color: var(--accent, #60a5fa);
+}
+
+/* Accent helpers: set --accent for each card */
+.accent-blue { --accent: #4f46e5; }
+.accent-sky { --accent: #0284c7; }
+.accent-cyan { --accent: #06b6d4; }
+.accent-emerald { --accent: #10b981; }
+.accent-amber { --accent: #f59e0b; }
+.accent-rose { --accent: #f43f5e; }
+
+/* Staggered reveal utilities for wow.js */
+[data-wow-delay=".1s"]{ animation-delay: .1s !important; }
+[data-wow-delay=".2s"]{ animation-delay: .2s !important; }
+[data-wow-delay=".3s"]{ animation-delay: .3s !important; }
+[data-wow-delay=".4s"]{ animation-delay: .4s !important; }
+[data-wow-delay=".5s"]{ animation-delay: .5s !important; }
+[data-wow-delay=".6s"]{ animation-delay: .6s !important; }
+[data-wow-delay=".7s"]{ animation-delay: .7s !important; }
+[data-wow-delay=".8s"]{ animation-delay: .8s !important; }
+[data-wow-delay=".9s"]{ animation-delay: .9s !important; }
+
+/* Tidy up the Read More link inside cards */
+.service-item .btn-link{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent, var(--blue-dark));
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid rgba(88,86,233,0.25);
+    padding-bottom: 2px;
+    -webkit-transition: gap .2s ease, border-color .2s ease, color .2s ease;
+    -o-transition: gap .2s ease, border-color .2s ease, color .2s ease;
+    transition: gap .2s ease, border-color .2s ease, color .2s ease;
+}
+.service-item .btn-link::after{
+    content: "\f061"; /* arrow-right */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    -webkit-transition: -webkit-transform .2s ease;
+    transition: transform .2s ease;
+}
+.service-item:hover .btn-link{
+    gap: 10px;
+    border-color: var(--accent, var(--blue-dark));
+}
+.service-item:hover .btn-link::after{
+    -webkit-transform: translateX(2px);
+        -ms-transform: translateX(2px);
+            transform: translateX(2px);
 }
 /*---==========================
    End Service Section css 
@@ -4179,11 +4581,6 @@ button {
     color: var(--blue-dark);
     border-color: var(--blue-dark);
 }
-.sidebar-widget-area .widget.category-widget .category-nav li:last-child>a{
-    padding-bottom: 0;
-    border-bottom: none;
-}
-
 .sidebar-widget-area .widget.contact-info-widget{
     border:none;
     padding: 60px 50px;
@@ -4371,8 +4768,8 @@ button {
     color: #fff;
     font-size: 24px;
     display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -4387,7 +4784,7 @@ button {
 }
 .information-style-one .icon span{
     display: -webkit-box;
-    display: -ms-flexbox;
+    display: -ms-inline-flexbox;
     display: flex;
     -webkit-box-align: center;
         -ms-flex-align: center;

@@ -7,9 +7,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!--====== Title ======-->
-        <title>Our Services - AstrifTech LLP</title>
+    <title>Astriftech LLP</title>
         <!--====== Favicon Icon ======-->
-        <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
+    <link rel="shortcut icon" href="assets/images/Astriftech Logo_small.png" type="image/png">
         <!--====== Default css ======-->
         <link rel="stylesheet" href="assets/css/default.css">
         <!--====== Style css ======-->
@@ -19,6 +19,120 @@
         
         <!--====== Custom Service Page Styles ======-->
         <style>
+            /* Grid layout to show two services side by side on desktop */
+            .services-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 30px;
+            }
+            @media (max-width: 991px) {
+                .services-grid { grid-template-columns: 1fr; }
+            }
+
+            /* Enhanced card styling with gradients and better visuals */
+            .service-card {
+                background: #fff;
+                border-radius: 20px;
+                box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+                padding: 32px;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                transition: all .3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+            .service-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: var(--card-gradient);
+            }
+            .service-card:hover { 
+                transform: translateY(-8px); 
+                box-shadow: 0 25px 50px rgba(0,0,0,0.15); 
+            }
+            
+            /* Individual card backgrounds and gradients */
+            .service-card.card--smm { --card-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+            .service-card.card--seo { --card-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+            .service-card.card--influencer { --card-gradient: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+            .service-card.card--web { --card-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+            .service-card.card--ads { --card-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+            .service-card.card--chatbot { --card-gradient: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+
+            .service-card .icon {
+                width: 64px;
+                height: 64px;
+                border-radius: 16px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                margin-bottom: 20px;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+                font-size: 28px;
+                position: relative;
+            }
+            .service-card .icon::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border-radius: 16px;
+                background: var(--card-gradient);
+                opacity: 0.9;
+            }
+            .service-card .icon i {
+                position: relative;
+                z-index: 1;
+            }
+            
+            .service-card h3 {
+                font-size: 24px;
+                line-height: 1.3;
+                margin: 0 0 12px;
+                color: #1f2937;
+                font-weight: 800;
+            }
+            .service-card p {
+                color: #4b5563;
+                margin-bottom: 20px;
+                line-height: 1.6;
+                font-size: 15px;
+            }
+            
+            .feature-list { 
+                list-style: none; 
+                padding: 0; 
+                margin: 0; 
+                display: grid; 
+                gap: 12px; 
+                margin-top: auto;
+            }
+            .feature-list li { 
+                display: grid; 
+                grid-template-columns: 28px 1fr; 
+                align-items: start; 
+                column-gap: 12px; 
+                color: #374151;
+                background: rgba(0,0,0,0.02);
+                padding: 10px 12px;
+                border-radius: 8px;
+                transition: all 0.2s ease;
+            }
+            .feature-list li:hover {
+                background: rgba(0,0,0,0.04);
+                transform: translateX(2px);
+            }
+            .feature-list i { 
+                color: #667eea; 
+                margin-top: 2px;
+                font-size: 14px;
+            }
+
             .service-item-wrapper {
                 background: #fff;
                 border-radius: 20px;
@@ -141,7 +255,7 @@
             <div class="panel-overlay"></div>
             <div class="offcanvas-panel-inner">
                 <div class="panel-logo">
-                    <a href="index.html"><img src="assets/images/logo/logo-1.png" alt="Qempo"></a>
+                    <a href="index.html"><img src="assets/images/logo/Astriftech-LOGO1.png" alt="Qempo"></a>
                 </div>
                 <div class="about-us">
                     <h5 class="panel-widget-title">About AstrifTech</h5>
@@ -171,14 +285,14 @@
             </div>
         </div><!--====== offcanvas-panel ======-->
         <!--====== Start Header Section ======-->
-        <header class="theme-header transparent-header">
+    <header class="theme-header transparent-header blend-header">
             <!-- header Navigation -->
             <div class="header-navigation navigation-style-v1">
                 <div class="nav-overlay"></div>
                 <div class="container-fluid">
                     <div class="primary-menu">
                         <div class="site-branding">
-                            <a href="index.html" class="brand-logo"><img src="assets/images/logo/logo-1.png" alt="Site Logo"></a>
+                            <a href="index.html" class="brand-logo"><img src="assets/images/logo/Astriftech-LOGO1.png" alt="Site Logo"></a>
                         </div>
                         <div class="nav-menu">
                             <!-- Navbar Close -->
@@ -205,6 +319,11 @@
                         </div>
                         <div class="header-right-nav">
                             <ul>
+                                <li>
+                                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode" title="Toggle theme">
+                                        <i class="far fa-moon"></i>
+                                    </button>
+                                </li>
                                 <li class="navbar-toggle-btn">
                                     <div class="navbar-toggler">
                                         <span></span>
@@ -252,230 +371,84 @@
                     </div>
                 </div>
 
-                <!-- Social Media Management -->
-                <div class="service-item-wrapper mb-80 wow fadeInUp" data-wow-delay=".15s">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <div class="service-content">
-                                <div class="service-icon mb-30">
-                                    <i class="fab fa-facebook" style="font-size: 60px; color: #3b82f6;"></i>
-                                </div>
-                                <h3 class="service-title mb-20">Social Media Management</h3>
-                                <p class="service-description mb-30">Transform your social media presence with our comprehensive management services. We create, schedule, and optimize content that truly connects with your audience while driving meaningful engagement and growth.</p>
-                                
-                                <div class="service-features">
-                                    <div class="feature-item mb-20">
-                                        <h5><i class="fas fa-pencil-alt mr-2" style="color: #3b82f6;"></i> Content Creation & Scheduling</h5>
-                                        <p>Produce and plan engaging content that resonates with your audience across all platforms.</p>
-                                    </div>
-                                    <div class="feature-item mb-20">
-                                        <h5><i class="fas fa-chart-line mr-2" style="color: #3b82f6;"></i> Analytics & Reporting</h5>
-                                        <p>Track performance with actionable insights and detailed reports to optimize your strategy.</p>
-                                    </div>
-                                    <div class="feature-item">
-                                        <h5><i class="fas fa-thumbs-up mr-2" style="color: #3b82f6;"></i> Engagement and Reach Enhancement</h5>
-                                        <p>Increase your brand's interaction and visibility online through strategic community management.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="service-image">
-                                <div class="service-visual" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 400px; border-radius: 15px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fab fa-instagram" style="font-size: 120px; color: white; opacity: 0.8;"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Compact two-column services grid -->
+                <div class="services-grid">
+                    <!-- Social Media Management -->
+                    <article class="service-card card--smm wow fadeInUp" data-wow-delay=".05s">
+                        <div class="icon"><i class="fas fa-hashtag"></i></div>
+                        <h3>Social Media Management</h3>
+                        <p>Transform your social media presence with our comprehensive management services. We create, schedule, and optimize content that connects with your audience and drives growth.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-pencil-alt"></i><span>Content Creation & Scheduling</span></li>
+                            <li><i class="fas fa-chart-line"></i><span>Analytics & Reporting</span></li>
+                            <li><i class="fas fa-thumbs-up"></i><span>Engagement and Reach Enhancement</span></li>
+                        </ul>
+                    </article>
 
-                <!-- SEO Services -->
-                <div class="service-item-wrapper mb-80 wow fadeInUp" data-wow-delay=".25s">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 order-lg-2">
-                            <div class="service-content">
-                                <div class="service-icon mb-30">
-                                    <i class="fas fa-search" style="font-size: 60px; color: #10b981;"></i>
-                                </div>
-                                <h3 class="service-title mb-20">SEO (Search Engine Optimization)</h3>
-                                <p class="service-description mb-30">Dominate search results with our comprehensive SEO strategies. We optimize every aspect of your online presence to ensure maximum visibility and organic traffic growth.</p>
-                                
-                                <div class="service-features">
-                                    <div class="feature-item mb-20">
-                                        <h5><i class="fas fa-search-plus mr-2" style="color: #10b981;"></i> SEO Audit & Monitoring</h5>
-                                        <p>Perform detailed SEO audits and ongoing site health checks to identify optimization opportunities.</p>
-                                    </div>
-                                    <div class="feature-item mb-20">
-                                        <h5><i class="fas fa-cogs mr-2" style="color: #10b981;"></i> On-site SEO Optimization</h5>
-                                        <p>Leverage the best tools and plugins for comprehensive on-page optimization and technical improvements.</p>
-                                    </div>
-                                    <div class="feature-item mb-20">
-                                        <h5><i class="fas fa-tachometer-alt mr-2" style="color: #10b981;"></i> Site Speed & CDN Setup</h5>
-                                        <p>Ensure fast, reliable website experiences for your visitors with optimized loading times.</p>
-                                    </div>
-                                    <div class="feature-item">
-                                        <h5><i class="fas fa-analytics mr-2" style="color: #10b981;"></i> Performance Tracking & Analytics</h5>
-                                        <p>Monitor search rankings and web traffic continuously to drive sustained growth.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 order-lg-1">
-                            <div class="service-image">
-                                <div class="service-visual" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); height: 400px; border-radius: 15px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fab fa-google" style="font-size: 120px; color: white; opacity: 0.8;"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <!-- SEO -->
+                    <article class="service-card card--seo wow fadeInUp" data-wow-delay=".10s">
+                        <div class="icon"><i class="fas fa-search"></i></div>
+                        <h3>SEO (Search Engine Optimization)</h3>
+                        <p>Dominate search results with comprehensive SEO strategies. We optimize every aspect of your online presence for maximum visibility and organic growth.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-search-plus"></i><span>SEO Audit & Monitoring</span></li>
+                            <li><i class="fas fa-cogs"></i><span>On-site SEO Optimization</span></li>
+                            <li><i class="fas fa-tachometer-alt"></i><span>Site Speed & CDN Setup</span></li>
+                            <li><i class="fas fa-chart-area"></i><span>Performance Tracking & Analytics</span></li>
+                        </ul>
+                    </article>
 
-                <!-- Influencer Marketing -->
-                <div class="service-item-wrapper mb-80 wow fadeInUp" data-wow-delay=".35s">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <div class="service-content">
-                                <div class="service-icon mb-30">
-                                    <i class="fas fa-star" style="font-size: 60px; color: #f59e0b;"></i>
-                                </div>
-                                <h3 class="service-title mb-20">Influencer Marketing</h3>
-                                <p class="service-description mb-30">Amplify your brand's reach through strategic influencer partnerships. We connect you with the right voices to authentically promote your products and services to engaged audiences.</p>
-                                
-                                <div class="service-features">
-                                    <div class="feature-item mb-20">
-                                        <h5><i class="fas fa-users mr-2" style="color: #f59e0b;"></i> Influencer Discovery</h5>
-                                        <p>Find and connect with relevant influencers who align perfectly with your brand values and target audience.</p>
-                                    </div>
-                                    <div class="feature-item">
-                                        <h5><i class="fas fa-bullhorn mr-2" style="color: #f59e0b;"></i> Campaign Management</h5>
-                                        <p>Organize, launch, and optimize influencer campaigns seamlessly from start to finish.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="service-image">
-                                <div class="service-visual" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); height: 350px; border-radius: 15px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-handshake" style="font-size: 120px; color: #f59e0b; opacity: 0.8;"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <!-- Influencer Marketing -->
+                    <article class="service-card card--influencer wow fadeInUp" data-wow-delay=".15s">
+                        <div class="icon"><i class="fas fa-star"></i></div>
+                        <h3>Influencer Marketing</h3>
+                        <p>Amplify your brand's reach with strategic influencer partnerships that authentically promote your products to engaged audiences.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-users"></i><span>Influencer Discovery</span></li>
+                            <li><i class="fas fa-bullhorn"></i><span>Campaign Management</span></li>
+                            <li><i class="fas fa-chart-pie"></i><span>ROI Tracking & Analytics</span></li>
+                            <li><i class="fas fa-handshake"></i><span>Partnership Management</span></li>
+                        </ul>
+                    </article>
 
-                <!-- Web Development -->
-                <div class="service-item-wrapper mb-80 wow fadeInUp" data-wow-delay=".45s">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 order-lg-2">
-                            <div class="service-content">
-                                <div class="service-icon mb-30">
-                                    <i class="fas fa-code" style="font-size: 60px; color: #8b5cf6;"></i>
-                                </div>
-                                <h3 class="service-title mb-20">Web Development</h3>
-                                <p class="service-description mb-30">Build powerful, scalable websites and web applications that drive business growth. From simple landing pages to complex e-commerce platforms, we create digital experiences that convert.</p>
-                                
-                                <div class="service-features">
-                                    <div class="feature-item mb-20">
-                                        <h5><i class="fab fa-wordpress mr-2" style="color: #8b5cf6;"></i> WordPress & Shopify Sites</h5>
-                                        <p>Develop modern, dynamic websites using leading CMS platforms for easy management and scalability.</p>
-                                    </div>
-                                    <div class="feature-item mb-20">
-                                        <h5><i class="fas fa-layer-group mr-2" style="color: #8b5cf6;"></i> Full Stack Development</h5>
-                                        <p>Build robust web applications and custom solutions tailored to your specific business goals.</p>
-                                    </div>
-                                    <div class="feature-item mb-20">
-                                        <h5><i class="fas fa-comments mr-2" style="color: #8b5cf6;"></i> Forum & Community Websites</h5>
-                                        <p>Create interactive platforms for discussion and community building that engage your audience.</p>
-                                    </div>
-                                    <div class="feature-item">
-                                        <h5><i class="fas fa-rocket mr-2" style="color: #8b5cf6;"></i> Landing Pages</h5>
-                                        <p>Design focused, conversion-optimized pages that turn visitors into valuable leads and customers.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 order-lg-1">
-                            <div class="service-image">
-                                <div class="service-visual" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 450px; border-radius: 15px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-laptop-code" style="font-size: 120px; color: white; opacity: 0.8;"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <!-- Web Development -->
+                    <article class="service-card card--web wow fadeInUp" data-wow-delay=".20s">
+                        <div class="icon"><i class="fas fa-code"></i></div>
+                        <h3>Web Development</h3>
+                        <p>Build powerful, scalable websites and web apps that drive business growth—from landing pages to complex e‑commerce platforms.</p>
+                        <ul class="feature-list">
+                            <li><i class="fab fa-wordpress"></i><span>WordPress & Shopify Sites</span></li>
+                            <li><i class="fas fa-layer-group"></i><span>Full Stack Development</span></li>
+                            <li><i class="fas fa-comments"></i><span>Forum & Community Websites</span></li>
+                            <li><i class="fas fa-rocket"></i><span>Landing Pages</span></li>
+                        </ul>
+                    </article>
 
-                <!-- Paid Media Advertising -->
-                <div class="service-item-wrapper mb-80 wow fadeInUp" data-wow-delay=".55s">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <div class="service-content">
-                                <div class="service-icon mb-30">
-                                    <i class="fas fa-ad" style="font-size: 60px; color: #ef4444;"></i>
-                                </div>
-                                <h3 class="service-title mb-20">Paid Media Advertising</h3>
-                                <p class="service-description mb-30">Maximize your ROI with strategic paid advertising campaigns across multiple platforms. We create, manage, and optimize ads that reach your ideal customers at the right time.</p>
-                                
-                                <div class="service-features">
-                                    <div class="feature-item mb-20">
-                                        <h5><i class="fab fa-google mr-2" style="color: #ef4444;"></i> Google Ads</h5>
-                                        <p>Target potential customers with effective search and display ad campaigns that drive qualified traffic.</p>
-                                    </div>
-                                    <div class="feature-item mb-20">
-                                        <h5><i class="fab fa-facebook mr-2" style="color: #ef4444;"></i> Meta Ads (Facebook & Instagram)</h5>
-                                        <p>Promote your brand across Facebook and Instagram platforms for maximum reach and engagement.</p>
-                                    </div>
-                                    <div class="feature-item">
-                                        <h5><i class="fab fa-linkedin mr-2" style="color: #ef4444;"></i> LinkedIn Ads</h5>
-                                        <p>Engage with professionals and decision-makers through LinkedIn's powerful B2B advertising network.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="service-image">
-                                <div class="service-visual" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); height: 400px; border-radius: 15px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-chart-line" style="font-size: 120px; color: #ef4444; opacity: 0.8;"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <!-- Paid Media Advertising -->
+                    <article class="service-card card--ads wow fadeInUp" data-wow-delay=".25s">
+                        <div class="icon"><i class="fas fa-ad"></i></div>
+                        <h3>Paid Media Advertising</h3>
+                        <p>Maximize ROI with strategic paid campaigns across Google, Meta, and LinkedIn—reaching the right customers at the right time.</p>
+                        <ul class="feature-list">
+                            <li><i class="fab fa-google"></i><span>Google Ads</span></li>
+                            <li><i class="fab fa-facebook"></i><span>Meta Ads (Facebook & Instagram)</span></li>
+                            <li><i class="fab fa-linkedin"></i><span>LinkedIn Ads</span></li>
+                            <li><i class="fas fa-bullseye"></i><span>Conversion Optimization</span></li>
+                        </ul>
+                    </article>
 
-                <!-- Chatbot Development -->
-                <div class="service-item-wrapper mb-80 wow fadeInUp" data-wow-delay=".65s">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 order-lg-2">
-                            <div class="service-content">
-                                <div class="service-icon mb-30">
-                                    <i class="fas fa-robot" style="font-size: 60px; color: #06b6d4;"></i>
-                                </div>
-                                <h3 class="service-title mb-20">AI Chatbot Development</h3>
-                                <p class="service-description mb-30">Revolutionize customer interactions with intelligent AI chatbots. Available 24/7, our chatbots handle customer support, generate leads, and streamline business processes automatically.</p>
-                                
-                                <div class="service-features">
-                                    <div class="feature-item mb-20">
-                                        <h5><i class="fas fa-headset mr-2" style="color: #06b6d4;"></i> Customer Support Chatbots</h5>
-                                        <p>Deliver instant answers and comprehensive support to customers around the clock with AI-powered assistance.</p>
-                                    </div>
-                                    <div class="feature-item mb-20">
-                                        <h5><i class="fas fa-user-check mr-2" style="color: #06b6d4;"></i> Lead Generation & Qualification</h5>
-                                        <p>Capture and qualify leads directly through intelligent conversational interfaces that engage prospects.</p>
-                                    </div>
-                                    <div class="feature-item">
-                                        <h5><i class="fas fa-calendar-check mr-2" style="color: #06b6d4;"></i> Transactional & Booking Chatbots</h5>
-                                        <p>Enable seamless bookings, appointments, and purchases through automated chat experiences.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 order-lg-1">
-                            <div class="service-image">
-                                <div class="service-visual" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); height: 400px; border-radius: 15px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-comments" style="font-size: 120px; color: #06b6d4; opacity: 0.8;"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- AI Chatbot Development -->
+                    <article class="service-card card--chatbot wow fadeInUp" data-wow-delay=".30s">
+                        <div class="icon"><i class="fas fa-robot"></i></div>
+                        <h3>AI Chatbot Development</h3>
+                        <p>Revolutionize customer interactions with intelligent, 24/7 chatbots for support, lead generation, bookings, and more.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-headset"></i><span>Customer Support Chatbots</span></li>
+                            <li><i class="fas fa-user-check"></i><span>Lead Generation & Qualification</span></li>
+                            <li><i class="fas fa-calendar-check"></i><span>Transactional & Booking Chatbots</span></li>
+                            <li><i class="fas fa-brain"></i><span>AI Training & Optimization</span></li>
+                        </ul>
+                    </article>
                 </div>
             </div>
         </section><!--====== End Main Services Section ======-->
@@ -609,6 +582,7 @@
         <!--====== Parallax js ======-->
         <script src="assets/vendor/parallax.min.js"></script>
         <!--====== Main js ======-->
-        <script src="assets/js/theme.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/dark-mode.js"></script>
     </body>
 </html>
