@@ -16,6 +16,134 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <!--====== Responsive css ======-->
         <link rel="stylesheet" href="assets/css/responsive.css">
+        
+    <!-- Page-level: Animated Meet Our Team oval CTA -->
+        <style>
+            /* Offset content below transparent header */
+            .team-intro{ padding-top: 150px; padding-bottom: 80px; }
+            @media (min-width: 992px){ .team-intro{ padding-top: 160px; } }
+
+            .team-intro .intro-wrap{ text-align: center; }
+            .team-intro-cta{
+                position: relative;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 22px 40px;
+                font-weight: 800;
+                font-size: 32px;
+                letter-spacing: -0.02em;
+                color: var(--heading);
+            }
+            .team-intro-cta svg{
+                position: absolute;
+                inset: -22px -40px; /* extend stroke outside larger text */
+                width: calc(100% + 80px);
+                height: calc(100% + 44px);
+                overflow: visible;
+                pointer-events: none;
+            }
+            .team-intro-cta ellipse{
+                fill: transparent;
+                stroke: var(--blue-dark);
+                stroke-width: 4;
+                stroke-linecap: round;
+                /* Dash animation: large value works across sizes */
+                stroke-dasharray: var(--dash, 1100);
+                stroke-dashoffset: var(--dash, 1100);
+                animation: drawRestart 6.5s ease-in-out infinite;
+                opacity: 0.9;
+                filter: drop-shadow(0 6px 18px rgba(16,24,40,0.12));
+                vector-effect: non-scaling-stroke;
+            }
+            /* Restarting loop: draws to end, then instantly resets */
+            @keyframes drawRestart{
+                0%{ stroke-dashoffset: var(--dash, 1100); }
+                97%{ stroke-dashoffset: 0; }
+                100%{ stroke-dashoffset: var(--dash, 1100); }
+            }
+            .team-intro-cta:hover ellipse{ animation-duration: 5s; }
+            @media (prefers-reduced-motion: reduce){
+                .team-intro-cta ellipse{ animation: none; stroke-dashoffset: 0; }
+            }
+            /* Dark mode tint */
+            body.theme-dark .team-intro-cta{ color: #e5e7eb; }
+            body.theme-dark .team-intro-cta ellipse{ stroke: #6ea8fe; opacity: 0.85; filter: drop-shadow(0 10px 24px rgba(2,6,23,0.5)); }
+
+            /* Funky overlap: add a lighter, offset echo stroke */
+            .team-intro-cta ellipse.echo{
+                stroke: rgba(89,86,233,0.55);
+                stroke-width: 2.5;
+                animation-delay: .6s;
+                transform: rotate(-2deg) scale(0.99);
+                opacity: 0.7;
+            }
+            body.theme-dark .team-intro-cta ellipse.echo{ stroke: rgba(110,168,254,0.6); }
+
+            /* Responsive sizing */
+            @media (max-width: 991.98px){
+                .team-intro{ padding-top: 135px; padding-bottom: 60px; }
+                .team-intro-cta{ font-size: 28px; padding: 20px 36px; }
+                .team-intro-cta svg{ inset: -18px -32px; width: calc(100% + 64px); height: calc(100% + 36px); }
+            }
+            @media (max-width: 575.98px){
+                .team-intro-cta{ font-size: 22px; padding: 14px 24px; }
+                .team-intro-cta svg{ inset: -12px -22px; width: calc(100% + 44px); height: calc(100% + 24px); }
+            }
+
+            /* Team cards: subtle hover motion */
+            .team-area .team-item{ transition: transform .35s ease, box-shadow .35s ease; }
+            .team-area .team-item:hover{ transform: translateY(-6px); box-shadow: 0 12px 28px rgba(16,24,40,0.12); }
+            .team-area .team-item .img-holder{ border-radius: 14px; overflow: hidden; }
+            .team-area .team-item .img-holder img{ transition: transform .65s ease, filter .65s ease; transform-origin: center; }
+            .team-area .team-item:hover .img-holder img{ transform: scale(1.04); }
+            body.theme-dark .team-area .team-item:hover{ box-shadow: 0 16px 40px rgba(2,6,23,0.55); }
+            @media (prefers-reduced-motion: reduce){
+                .team-area .team-item, .team-area .team-item .img-holder img{ transition: none; }
+                .team-area .team-item:hover{ transform: none; box-shadow: none; }
+            }
+
+            /* Modern neutral Read more link */
+            .team-area .link-quiet{
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                font-size: 16px;
+                font-weight: 600;
+                color: var(--heading);
+                text-decoration: none;
+                position: relative;
+                line-height: 1.2;
+            }
+            .team-area .link-quiet::before{
+                content: '';
+                position: absolute;
+                left: 0; right: 0; bottom: -2px;
+                height: 2px;
+                background-color: currentColor;
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform .25s ease;
+                opacity: .35;
+            }
+            .team-area .link-quiet::after{
+                content: '→';
+                font-size: 16px;
+                opacity: .7;
+                transform: translateX(0);
+                transition: transform .25s ease, opacity .25s ease;
+            }
+            .team-area .link-quiet:hover::before{ transform: scaleX(1); }
+            .team-area .link-quiet:hover::after{ transform: translateX(3px); opacity: 1; }
+            .team-area .link-quiet:focus-visible{
+                outline: none;
+                box-shadow: 0 0 0 3px rgba(96,165,250,0.25);
+                border-radius: 4px;
+            }
+            body.theme-dark .team-area .link-quiet{ color: #e5e7eb; }
+            body.theme-dark .team-area .link-quiet:focus-visible{ box-shadow: 0 0 0 3px rgba(96,165,250,0.35); }
+            .team-area .text .position{ margin-bottom: 6px; }
+        </style>
     </head>
     <body>
         <!--====== Start Preloader ======-->
@@ -97,8 +225,8 @@
                         <div class="header-right-nav">
                             <ul>
                                 <li>
-                                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode" title="Toggle theme">
-                                        <i class="far fa-moon"></i>
+                                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+                                        <i class="fas fa-moon"></i>
                                     </button>
                                 </li>
                                 <li class="navbar-toggle-btn">
@@ -114,27 +242,20 @@
                 </div>
             </div>
         </header><!--====== End Header Section ======-->
-        <!--====== Start Page-banner section ======-->
-        <section class="page-banner page-banner-small bg_cover position-relative z-1">
-            <div class="shape shape-one scene"><span data-depth="1"><img src="assets/images/shape/shape-1.png" alt=""></span></div>
-            <div class="shape shape-two scene"><span data-depth="2"><img src="assets/images/shape/shape-2.png" alt=""></span></div>
-            <div class="shape shape-three scene"><span data-depth="3"><img src="assets/images/shape/shape-3.png" alt=""></span></div>
-            <div class="shape shape-four scene"><span data-depth="4"><img src="assets/images/shape/shape-2.png" alt=""></span></div>
+        <!-- Intro: animated Meet Our Team right below nav -->
+        <section class="team-intro">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-7">
-                        <div class="page-title text-center">
-                            <h1>Expert Team</h1>
-                            <ul class="breadcrumbs-link">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="active">Expert Team</li>
-                            </ul>
-                        </div>
+                <div class="intro-wrap wow fadeInUp" data-wow-delay=".1s">
+                    <div class="team-intro-cta" aria-label="Meet Our Team">
+                        <svg viewBox="0 0 360 120" preserveAspectRatio="none" aria-hidden="true">
+                            <ellipse cx="180" cy="60" rx="172" ry="46"></ellipse>
+                            <ellipse class="echo" cx="180" cy="60" rx="168" ry="42"></ellipse>
+                        </svg>
+                        <span>Meet Our Team</span>
                     </div>
                 </div>
             </div>
         </section>
-        <!--====== End Page-banner section ======-->
         <!--====== Start Skill section ======-->
         <!-- <div class="skill-area skill-area-v2 pt-130 pb-80 position-relative z-1">
             <div class="shape shape-one scene"><span data-depth="1"><img src="assets/images/shape/shape-7.png" alt=""></span></div>
@@ -191,17 +312,9 @@
             </div> -->
         <!-- </div>====== End Skill section ====== -->
         <!--====== Start Team section ======-->
-        <section class="team-area team-area-v2 pb-130">
+    <section class="team-area team-area-v2 pb-130">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="section-title text-center mb-55 wow fadeInUp">
-                            <span class="sub-title st-one">Meet Our Team</span>
-                            <!-- <h2>Experience Team Members</h2> -->
-                            <!-- <p>Professional Design Agency to provide solutions</p> -->
-                        </div>
-                    </div>
-                </div>
+        <!-- Section heading removed; intro above the navbar provides the title -->
                 <div class="row">
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div class="team-item mb-55 wow fadeInUp" data-wow-delay=".10s">
@@ -215,6 +328,7 @@
                                 </ul>
                                 <h4><a href="Shreyas_details.html">Shreyas Srikantapuram</a></h4>
                                 <p class="position">Founder, CEO</p>
+                                <a href="Shreyas_details.html" class="link-quiet" aria-label="Read more about Shreyas Srikantapuram">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -230,6 +344,7 @@
                                 </ul>
                                 <h4><a href="Nihal_details.html">Nihal H U</a></h4>
                                 <p class="position">Founder, CTO</p>
+                                <a href="Nihal_details.html" class="link-quiet" aria-label="Read more about Nihal H U">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -245,6 +360,7 @@
                                 </ul>
                                 <h4><a href="Likitha N_details.html">Likitha N </a></h4>
                                 <p class="position">Founder, Director</p>
+                                <a href="Likitha N_details.html" class="link-quiet" aria-label="Read more about Likitha N">Read more</a>
                             </div>
                         </div>
                     </div>
@@ -260,6 +376,7 @@
                                 </ul>
                                 <h4><a href="Rohith K_details.html">Rohith K</a></h4>
                                 <p class="position">Founder, Director</p>
+                                <a href="Rohith K_details.html" class="link-quiet" aria-label="Read more about Rohith K">Read more</a>
                             </div>
                         </div>
                     </div>

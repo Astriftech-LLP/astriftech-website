@@ -16,6 +16,145 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <!--====== Responsive css ======-->
         <link rel="stylesheet" href="assets/css/responsive.css">
+        
+    <!-- Page-level overrides: dark-mode colorful service cards -->
+        <style>
+            @keyframes gradientShift { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+            /* Animated stroke-draw used by oval labels */
+            @keyframes drawRestart{
+                0%{ stroke-dashoffset: var(--dash, 1100); }
+                97%{ stroke-dashoffset: 0; }
+                100%{ stroke-dashoffset: var(--dash, 1100); }
+            }
+            /* Base dark card treatment for home services */
+            body.theme-dark .service-item.service-style-one{
+                background: linear-gradient(135deg, var(--card-dark-1, #0f172a), var(--card-dark-2, #111827));
+                background-size: 200% 200%;
+                animation: gradientShift 10s ease-in-out infinite alternate;
+                border: 1px solid rgba(148,163,184,0.18);
+                color: #e5e7eb;
+                box-shadow: 0 20px 60px rgba(2,6,23,0.5);
+            }
+            body.theme-dark .service-item.service-style-one .text h3.title{ color: #f3f4f6; }
+            body.theme-dark .service-item.service-style-one .text .list-style-two li{ color: #e5e7eb; }
+            body.theme-dark .service-item.service-style-one .text .list-style-two li::before{
+                background: rgba(255,255,255,0.15);
+                color: #93c5fd;
+            }
+            body.theme-dark .service-item.service-style-one .icon{
+                background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
+                box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+            }
+            body.theme-dark .service-item.service-style-one .icon i{ color: #e5e7eb; }
+            body.theme-dark .service-item.service-style-one .btn-link{
+                color: #c7d2fe;
+                border-bottom-color: rgba(255,255,255,0.35);
+            }
+            body.theme-dark .service-item.service-style-one:hover .btn-link{ border-bottom-color: #c7d2fe; }
+
+            /* Per-card palettes mapped to existing accent-* helpers */
+            body.theme-dark .service-item.service-style-one.accent-blue   { --card-dark-1: #0b1b4d; --card-dark-2: #0a1330; }
+            body.theme-dark .service-item.service-style-one.accent-emerald{ --card-dark-1: #1e1448; --card-dark-2: #2a1a58; }
+            body.theme-dark .service-item.service-style-one.accent-sky    { --card-dark-1: #0b2e2a; --card-dark-2: #10383f; }
+            body.theme-dark .service-item.service-style-one.accent-cyan   { --card-dark-1: #0c1d3a; --card-dark-2: #1a2744; }
+            body.theme-dark .service-item.service-style-one.accent-amber  { --card-dark-1: #2a1410; --card-dark-2: #3b1a14; }
+            body.theme-dark .service-item.service-style-one.accent-rose   { --card-dark-1: #2a1020; --card-dark-2: #3a1a2f; }
+
+            /* Home Services: align heading & description better */
+            .service-area .section-title{
+                margin-bottom: 36px; /* balanced spacing above cards */
+                text-align: left; /* align with cards */
+            }
+            .service-area .section-title h2{
+                margin-bottom: 10px; /* closer pairing with description */
+                letter-spacing: -0.02em; /* crisper headline */
+                max-width: 820px; /* align text width with description */
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .service-area .section-title p{
+                max-width: 820px; /* match heading width for symmetry */
+                margin-left: 0;
+                margin-right: 0;
+            }
+            @media (max-width: 767.98px){
+                .service-area .section-title{ text-align: center; }
+                .service-area .section-title h2{ line-height: 1.2; margin-left: auto; margin-right: auto; }
+                .service-area .section-title p{ font-size: 18px; margin-left: auto; margin-right: auto; }
+            }
+
+            /* Respect reduced motion */
+            @media (prefers-reduced-motion: reduce){
+                body.theme-dark .service-item.service-style-one{ animation: none; }
+            }
+
+            /* Inline label CTA for headings (reused for About Us) */
+            .label-oval-cta{
+                position: relative;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 12px 20px;
+                font-weight: 800;
+                font-size: 22px;
+                letter-spacing: -0.02em;
+                color: var(--heading);
+                margin-bottom: 14px;
+            }
+            .label-oval-cta svg{
+                position: absolute;
+                inset: -14px -26px;
+                width: calc(100% + 52px);
+                height: calc(100% + 28px);
+                overflow: visible;
+                pointer-events: none;
+            }
+            .label-oval-cta ellipse{
+                fill: transparent;
+                stroke: var(--blue-dark);
+                stroke-width: 3;
+                stroke-linecap: round;
+                stroke-dasharray: var(--dash, 1100);
+                stroke-dashoffset: var(--dash, 1100);
+                animation: drawRestart 6.5s ease-in-out infinite;
+                opacity: 0.9;
+                filter: drop-shadow(0 6px 18px rgba(16,24,40,0.12));
+                vector-effect: non-scaling-stroke;
+            }
+            .label-oval-cta:hover ellipse{ animation-duration: 5s; }
+            .label-oval-cta ellipse.echo{
+                stroke: rgba(89,86,233,0.55);
+                stroke-width: 2;
+                animation-delay: .6s;
+                transform: rotate(-2deg) scale(0.99);
+                opacity: 0.7;
+            }
+            body.theme-dark .label-oval-cta{ color: #e5e7eb; }
+            body.theme-dark .label-oval-cta ellipse{ stroke: #6ea8fe; opacity: 0.85; filter: drop-shadow(0 10px 24px rgba(2,6,23,0.5)); }
+            body.theme-dark .label-oval-cta ellipse.echo{ stroke: rgba(110,168,254,0.6); }
+            @media (prefers-reduced-motion: reduce){ .label-oval-cta ellipse{ animation: none; stroke-dashoffset: 0; } }
+
+            /* Calendly CTA section */
+            .calendly-cta{
+                position: relative;
+                padding: 84px 0;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: #fff;
+                overflow: hidden;
+            }
+            .calendly-cta:before, .calendly-cta:after{
+                content:""; position:absolute; border-radius:50%; filter: blur(60px); pointer-events:none;
+            }
+            .calendly-cta:before{ width:420px; height:420px; background: rgba(255,255,255,0.18); top:-120px; left:-120px; }
+            .calendly-cta:after{ width:520px; height:520px; background: rgba(255,255,255,0.12); bottom:-160px; right:-140px; }
+            .calendly-cta h2{ color:#fff; font-weight:800; font-size:34px; line-height:1.15; letter-spacing:-0.02em; margin:0 0 14px; }
+            .calendly-cta p{ color:rgba(255,255,255,.92); font-size:18px; margin:0 0 26px; }
+            .calendly-cta .cta-btn{ display:inline-flex; align-items:center; gap:10px; padding:14px 26px; border-radius:999px; background:#ffffff; color:#3b3eff; font-weight:800; text-decoration:none; box-shadow:0 14px 40px rgba(0,0,0,.22); transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+            .calendly-cta .cta-btn:hover{ transform: translateY(-2px); box-shadow:0 18px 50px rgba(0,0,0,.28); }
+            .calendly-cta .cta-btn i{ font-size:18px; }
+            @media (max-width: 991.98px){ .calendly-cta{ padding: 70px 0; } .calendly-cta h2{ font-size:28px; } .calendly-cta .text-end{ text-align: left !important; margin-top: 6px; } }
+            body.theme-dark .calendly-cta{ background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); }
+        </style>
     </head>
     <body>
         <!--====== Start Preloader ======-->
@@ -97,8 +236,8 @@
                         <div class="header-right-nav">
                             <ul>
                                 <li>
-                                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode" title="Toggle theme">
-                                        <i class="far fa-moon"></i>
+                                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+                                        <i class="fas fa-moon"></i>
                                     </button>
                                 </li>
                                 <li class="navbar-toggle-btn">
@@ -149,7 +288,13 @@
                     <div class="col-lg-6">
                         <div class="text-wrapper mb-50 wow fadeInRight">
                             <div class="section-title mb-15">
-                                <span class="sub-title st-one">About Us</span>
+                                <div class="label-oval-cta" aria-label="About Us">
+                                    <svg viewBox="0 0 360 120" preserveAspectRatio="none" aria-hidden="true">
+                                        <ellipse cx="180" cy="60" rx="172" ry="46"></ellipse>
+                                        <ellipse class="echo" cx="180" cy="60" rx="168" ry="42"></ellipse>
+                                    </svg>
+                                    <span>About Us</span>
+                                </div>
                                 <h2>Innovating the Future Through Technology</h2>
 </div>
 
@@ -175,9 +320,9 @@ AstrifTech LLP was founded by four passionate innovators with a mission to make 
         <!--====== Start Service Section ======-->
         <section class="service-area pt-90 pb-80">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="section-title text-center mb-55 wow fadeInUp">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title mb-55 wow fadeInUp">
                             <!--<span class="sub-title st-one">Services</span>-->
                             <h2>Our Services</h2>
                             <p>Comprehensive digital solutions to elevate your business</p>
@@ -577,6 +722,24 @@ AstrifTech LLP was founded by four passionate innovators with a mission to make 
             </div>
         </section>-->
         <!--====== End Testimonial Section ======-->
+        
+        <!--====== Calendly CTA (Home) ======-->
+        <section class="calendly-cta">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h2>Claim Your FREE Consultation in Digital Marketing or Website Development.</h2>
+                        <p>Let’s talk about growth, automation, and results tailored to your business.</p>
+                    </div>
+                    <div class="col-lg-4 text-end">
+                        <a class="cta-btn" href="https://calendly.com/nihalhu-astriftech/30min" target="_blank" rel="noopener nofollow">
+                            <i class="far fa-calendar-check"></i>
+                            Book 30‑min on Calendly
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!--====== Start Team Section ======-->
         <!--<section class="team-area team-area-v1 pt-130">
             <div class="container">

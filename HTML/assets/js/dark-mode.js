@@ -7,7 +7,11 @@
   }
   function updateIcon(){
     if(!toggle) return;
-    toggle.innerHTML = body.classList.contains('theme-dark') ? '<i class="far fa-sun"></i>' : '<i class="far fa-moon"></i>';
+    // Show a neutral Adjust icon in dark mode, and a Moon in light mode
+    var html = body.classList.contains('theme-dark')
+      ? '<i class="fas fa-adjust"></i>'
+      : '<i class="fas fa-moon"></i>';
+    toggle.innerHTML = html;
   }
   updateIcon();
   if (toggle) {

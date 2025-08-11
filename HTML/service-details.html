@@ -19,26 +19,29 @@
         
         <!--====== Custom Service Page Styles ======-->
         <style>
-            /* Grid layout to show two services side by side on desktop */
+            /* Grid layout to show three services on desktop, two on tablets, one on mobile */
             .services-grid {
                 display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-columns: repeat(3, minmax(0, 1fr));
                 gap: 30px;
             }
-            @media (max-width: 991px) {
+            @media (max-width: 1199px) {
+                .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            }
+            @media (max-width: 767px) {
                 .services-grid { grid-template-columns: 1fr; }
             }
 
             /* Enhanced card styling with gradients and better visuals */
             .service-card {
-                background: #fff;
+                background: #fff; /* light mode */
                 border-radius: 20px;
                 box-shadow: 0 12px 35px rgba(0,0,0,0.1);
                 padding: 32px;
                 height: 100%;
                 display: flex;
                 flex-direction: column;
-                transition: all .3s ease;
+                transition: all .35s ease;
                 position: relative;
                 overflow: hidden;
             }
@@ -97,12 +100,8 @@
                 color: #1f2937;
                 font-weight: 800;
             }
-            .service-card p {
-                color: #4b5563;
-                margin-bottom: 20px;
-                line-height: 1.6;
-                font-size: 15px;
-            }
+            /* no description text under the service title (kept here in case some stray <p> remains) */
+            .service-card p { display: none !important; }
             
             .feature-list { 
                 list-style: none; 
@@ -132,6 +131,36 @@
                 margin-top: 2px;
                 font-size: 14px;
             }
+
+            /* Dark mode: rich, unique dark card backgrounds with animated gradient */
+            @keyframes gradientShift {
+                0% { background-position: 0% 50%; }
+                100% { background-position: 100% 50%; }
+            }
+            body.theme-dark .service-card {
+                color: #e5e7eb;
+                background: linear-gradient(135deg, var(--card-dark-1, #0f172a), var(--card-dark-2, #111827));
+                background-size: 200% 200%;
+                animation: gradientShift 10s ease-in-out infinite alternate;
+                border: 1px solid rgba(148,163,184,0.15);
+                box-shadow: 0 20px 60px rgba(2,6,23,0.5);
+            }
+            body.theme-dark .service-card h3 { color: #f3f4f6; }
+            body.theme-dark .service-card .icon::before { opacity: 0.85; }
+            body.theme-dark .feature-list li { 
+                background: rgba(255,255,255,0.06);
+                color: #e5e7eb;
+            }
+            body.theme-dark .feature-list li:hover { background: rgba(255,255,255,0.10); }
+            body.theme-dark .feature-list i { color: #c7d2fe; }
+
+            /* Per-card palettes */
+            body.theme-dark .service-card.card--web { --card-dark-1: #0b1b4d; --card-dark-2: #0a1330; }
+            body.theme-dark .service-card.card--seo { --card-dark-1: #0b2e2a; --card-dark-2: #10383f; }
+            body.theme-dark .service-card.card--smm { --card-dark-1: #1e1448; --card-dark-2: #2a1a58; }
+            body.theme-dark .service-card.card--influencer { --card-dark-1: #2a1020; --card-dark-2: #3a1a2f; }
+            body.theme-dark .service-card.card--ads { --card-dark-1: #2a1410; --card-dark-2: #3b1a14; }
+            body.theme-dark .service-card.card--chatbot { --card-dark-1: #0c1d3a; --card-dark-2: #1a2744; }
 
             .service-item-wrapper {
                 background: #fff;
@@ -239,6 +268,68 @@
             .mr-2 {
                 margin-right: 8px;
             }
+
+            /* Services Intro: animated oval CTA like Team page */
+            .services-intro{ padding-top: 150px; padding-bottom: 80px; }
+            @media (min-width: 992px){ .services-intro{ padding-top: 160px; } }
+            .services-intro .intro-wrap{ text-align: center; }
+            .services-intro-cta{
+                position: relative;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 22px 40px;
+                font-weight: 800;
+                font-size: 32px;
+                letter-spacing: -0.02em;
+                color: var(--heading);
+            }
+            .services-intro-cta svg{
+                position: absolute;
+                inset: -22px -40px;
+                width: calc(100% + 80px);
+                height: calc(100% + 44px);
+                overflow: visible;
+                pointer-events: none;
+            }
+            .services-intro-cta ellipse{
+                fill: transparent;
+                stroke: var(--blue-dark);
+                stroke-width: 4;
+                stroke-linecap: round;
+                stroke-dasharray: var(--dash, 1100);
+                stroke-dashoffset: var(--dash, 1100);
+                animation: drawRestart 6.5s ease-in-out infinite;
+                opacity: 0.9;
+                filter: drop-shadow(0 6px 18px rgba(16,24,40,0.12));
+                vector-effect: non-scaling-stroke;
+            }
+            @keyframes drawRestart{
+                0%{ stroke-dashoffset: var(--dash, 1100); }
+                97%{ stroke-dashoffset: 0; }
+                100%{ stroke-dashoffset: var(--dash, 1100); }
+            }
+            .services-intro-cta:hover ellipse{ animation-duration: 5s; }
+            .services-intro-cta ellipse.echo{
+                stroke: rgba(89,86,233,0.55);
+                stroke-width: 2.5;
+                animation-delay: .6s;
+                transform: rotate(-2deg) scale(0.99);
+                opacity: 0.7;
+            }
+            body.theme-dark .services-intro-cta{ color: #e5e7eb; }
+            body.theme-dark .services-intro-cta ellipse{ stroke: #6ea8fe; opacity: 0.85; filter: drop-shadow(0 10px 24px rgba(2,6,23,0.5)); }
+            body.theme-dark .services-intro-cta ellipse.echo{ stroke: rgba(110,168,254,0.6); }
+            @media (prefers-reduced-motion: reduce){ .services-intro-cta ellipse{ animation: none; stroke-dashoffset: 0; } }
+            @media (max-width: 991.98px){
+                .services-intro{ padding-top: 135px; padding-bottom: 60px; }
+                .services-intro-cta{ font-size: 28px; padding: 20px 36px; }
+                .services-intro-cta svg{ inset: -18px -32px; width: calc(100% + 64px); height: calc(100% + 36px); }
+            }
+            @media (max-width: 575.98px){
+                .services-intro-cta{ font-size: 22px; padding: 14px 24px; }
+                .services-intro-cta svg{ inset: -12px -22px; width: calc(100% + 44px); height: calc(100% + 24px); }
+            }
         </style>
     </head>
     <body>
@@ -320,8 +411,8 @@
                         <div class="header-right-nav">
                             <ul>
                                 <li>
-                                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode" title="Toggle theme">
-                                        <i class="far fa-moon"></i>
+                                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+                                        <i class="fas fa-moon"></i>
                                     </button>
                                 </li>
                                 <li class="navbar-toggle-btn">
@@ -337,39 +428,25 @@
                 </div>
             </div>
         </header><!--====== End Header Section ======-->
-        <!--====== Start Page-banner section ======-->
-        <section class="page-banner page-banner-small bg_cover position-relative z-1">
-            <div class="shape shape-one scene"><span data-depth="1"><img src="assets/images/shape/shape-1.png" alt=""></span></div>
-            <div class="shape shape-two scene"><span data-depth="2"><img src="assets/images/shape/shape-2.png" alt=""></span></div>
-            <div class="shape shape-three scene"><span data-depth="3"><img src="assets/images/shape/shape-3.png" alt=""></span></div>
-            <div class="shape shape-four scene"><span data-depth="4"><img src="assets/images/shape/shape-2.png" alt=""></span></div>
+        <!-- Intro: animated Our Services right below nav -->
+        <section class="services-intro">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-7">
-                        <div class="page-title text-center">
-                            <h1>Our Services</h1>
-                            <ul class="breadcrumbs-link">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="active">Our Services</li>
-                            </ul>
-                        </div>
+                <div class="intro-wrap wow fadeInUp" data-wow-delay=".1s">
+                    <div class="services-intro-cta" aria-label="Our Services">
+                        <svg viewBox="0 0 360 120" preserveAspectRatio="none" aria-hidden="true">
+                            <ellipse cx="180" cy="60" rx="172" ry="46"></ellipse>
+                            <ellipse class="echo" cx="180" cy="60" rx="168" ry="42"></ellipse>
+                        </svg>
+                        <span>Our Services</span>
                     </div>
                 </div>
             </div>
-        </section><!--====== End Page-banner section ======-->
+        </section>
         
         <!--====== Start Main Services Section ======-->
-        <section class="services-area pt-90 pb-60">
+    <section class="services-area pt-0 pb-60">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <div class="section-title text-center mb-70 wow fadeInUp">
-                            <span class="sub-title st-one">Our Services</span>
-                            <h2>Complete Digital Solutions for Modern Businesses</h2>
-                            <p>From cutting-edge web development to AI-powered chatbots and comprehensive digital marketing strategies, we provide everything your business needs to thrive in the digital landscape</p>
-                        </div>
-                    </div>
-                </div>
+        <!-- Heading removed; animated intro above provides the title -->
 
                 <!-- Compact two-column services grid -->
                 <div class="services-grid">
@@ -377,7 +454,6 @@
                     <article class="service-card card--smm wow fadeInUp" data-wow-delay=".05s">
                         <div class="icon"><i class="fas fa-hashtag"></i></div>
                         <h3>Social Media Management</h3>
-                        <p>Transform your social media presence with our comprehensive management services. We create, schedule, and optimize content that connects with your audience and drives growth.</p>
                         <ul class="feature-list">
                             <li><i class="fas fa-pencil-alt"></i><span>Content Creation & Scheduling</span></li>
                             <li><i class="fas fa-chart-line"></i><span>Analytics & Reporting</span></li>
@@ -389,7 +465,6 @@
                     <article class="service-card card--seo wow fadeInUp" data-wow-delay=".10s">
                         <div class="icon"><i class="fas fa-search"></i></div>
                         <h3>SEO (Search Engine Optimization)</h3>
-                        <p>Dominate search results with comprehensive SEO strategies. We optimize every aspect of your online presence for maximum visibility and organic growth.</p>
                         <ul class="feature-list">
                             <li><i class="fas fa-search-plus"></i><span>SEO Audit & Monitoring</span></li>
                             <li><i class="fas fa-cogs"></i><span>On-site SEO Optimization</span></li>
@@ -402,7 +477,6 @@
                     <article class="service-card card--influencer wow fadeInUp" data-wow-delay=".15s">
                         <div class="icon"><i class="fas fa-star"></i></div>
                         <h3>Influencer Marketing</h3>
-                        <p>Amplify your brand's reach with strategic influencer partnerships that authentically promote your products to engaged audiences.</p>
                         <ul class="feature-list">
                             <li><i class="fas fa-users"></i><span>Influencer Discovery</span></li>
                             <li><i class="fas fa-bullhorn"></i><span>Campaign Management</span></li>
@@ -415,7 +489,6 @@
                     <article class="service-card card--web wow fadeInUp" data-wow-delay=".20s">
                         <div class="icon"><i class="fas fa-code"></i></div>
                         <h3>Web Development</h3>
-                        <p>Build powerful, scalable websites and web apps that drive business growth—from landing pages to complex e‑commerce platforms.</p>
                         <ul class="feature-list">
                             <li><i class="fab fa-wordpress"></i><span>WordPress & Shopify Sites</span></li>
                             <li><i class="fas fa-layer-group"></i><span>Full Stack Development</span></li>
@@ -428,7 +501,6 @@
                     <article class="service-card card--ads wow fadeInUp" data-wow-delay=".25s">
                         <div class="icon"><i class="fas fa-ad"></i></div>
                         <h3>Paid Media Advertising</h3>
-                        <p>Maximize ROI with strategic paid campaigns across Google, Meta, and LinkedIn—reaching the right customers at the right time.</p>
                         <ul class="feature-list">
                             <li><i class="fab fa-google"></i><span>Google Ads</span></li>
                             <li><i class="fab fa-facebook"></i><span>Meta Ads (Facebook & Instagram)</span></li>
@@ -441,7 +513,6 @@
                     <article class="service-card card--chatbot wow fadeInUp" data-wow-delay=".30s">
                         <div class="icon"><i class="fas fa-robot"></i></div>
                         <h3>AI Chatbot Development</h3>
-                        <p>Revolutionize customer interactions with intelligent, 24/7 chatbots for support, lead generation, bookings, and more.</p>
                         <ul class="feature-list">
                             <li><i class="fas fa-headset"></i><span>Customer Support Chatbots</span></li>
                             <li><i class="fas fa-user-check"></i><span>Lead Generation & Qualification</span></li>

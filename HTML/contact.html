@@ -16,6 +16,207 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <!--====== Responsive css ======-->
         <link rel="stylesheet" href="assets/css/responsive.css">
+        
+        <!-- Page-level: Animated Get In Touch oval CTA -->
+        <style>
+            .contact-intro{ padding-top: 150px; padding-bottom: 80px; }
+            @media (min-width: 992px){ .contact-intro{ padding-top: 160px; } }
+            .contact-intro .intro-wrap{ text-align: center; }
+            .contact-intro-cta{
+                position: relative;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 22px 40px;
+                font-weight: 800;
+                font-size: 32px;
+                letter-spacing: -0.02em;
+                color: var(--heading);
+            }
+            .contact-intro-cta svg{
+                position: absolute;
+                inset: -22px -40px;
+                width: calc(100% + 80px);
+                height: calc(100% + 44px);
+                overflow: visible;
+                pointer-events: none;
+            }
+            .contact-intro-cta ellipse{
+                fill: transparent;
+                stroke: var(--blue-dark);
+                stroke-width: 4;
+                stroke-linecap: round;
+                stroke-dasharray: var(--dash, 1100);
+                stroke-dashoffset: var(--dash, 1100);
+                animation: drawRestart 6.5s ease-in-out infinite;
+                opacity: 0.9;
+                filter: drop-shadow(0 6px 18px rgba(16,24,40,0.12));
+                vector-effect: non-scaling-stroke;
+            }
+            @keyframes drawRestart{
+                0%{ stroke-dashoffset: var(--dash, 1100); }
+                97%{ stroke-dashoffset: 0; }
+                100%{ stroke-dashoffset: var(--dash, 1100); }
+            }
+            .contact-intro-cta:hover ellipse{ animation-duration: 5s; }
+            .contact-intro-cta ellipse.echo{
+                stroke: rgba(89,86,233,0.55);
+                stroke-width: 2.5;
+                animation-delay: .6s;
+                transform: rotate(-2deg) scale(0.99);
+                opacity: 0.7;
+            }
+            body.theme-dark .contact-intro-cta{ color: #e5e7eb; }
+            body.theme-dark .contact-intro-cta ellipse{ stroke: #6ea8fe; opacity: 0.85; filter: drop-shadow(0 10px 24px rgba(2,6,23,0.5)); }
+            body.theme-dark .contact-intro-cta ellipse.echo{ stroke: rgba(110,168,254,0.6); }
+            @media (prefers-reduced-motion: reduce){ .contact-intro-cta ellipse{ animation: none; stroke-dashoffset: 0; } }
+            @media (max-width: 991.98px){
+                .contact-intro{ padding-top: 135px; padding-bottom: 60px; }
+                .contact-intro-cta{ font-size: 28px; padding: 20px 36px; }
+                .contact-intro-cta svg{ inset: -18px -32px; width: calc(100% + 64px); height: calc(100% + 36px); }
+            }
+            @media (max-width: 575.98px){
+                .contact-intro-cta{ font-size: 22px; padding: 14px 24px; }
+                .contact-intro-cta svg{ inset: -12px -22px; width: calc(100% + 44px); height: calc(100% + 24px); }
+            }
+
+            /* Inline label CTA for 'Message Us' */
+            .label-oval-cta{
+                position: relative;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 12px 20px;
+                font-weight: 800;
+                font-size: 22px;
+                letter-spacing: -0.02em;
+                color: var(--heading);
+                margin-bottom: 14px;
+            }
+            .label-oval-cta svg{
+                position: absolute;
+                inset: -14px -26px;
+                width: calc(100% + 52px);
+                height: calc(100% + 28px);
+                overflow: visible;
+                pointer-events: none;
+            }
+            .label-oval-cta ellipse{
+                fill: transparent;
+                stroke: var(--blue-dark);
+                stroke-width: 3;
+                stroke-linecap: round;
+                stroke-dasharray: var(--dash, 1100);
+                stroke-dashoffset: var(--dash, 1100);
+                animation: drawRestart 6.5s ease-in-out infinite;
+                opacity: 0.9;
+                filter: drop-shadow(0 6px 18px rgba(16,24,40,0.12));
+                vector-effect: non-scaling-stroke;
+            }
+            .label-oval-cta:hover ellipse{ animation-duration: 5s; }
+            .label-oval-cta ellipse.echo{
+                stroke: rgba(89,86,233,0.55);
+                stroke-width: 2;
+                animation-delay: .6s;
+                transform: rotate(-2deg) scale(0.99);
+                opacity: 0.7;
+            }
+            body.theme-dark .label-oval-cta{ color: #e5e7eb; }
+            body.theme-dark .label-oval-cta ellipse{ stroke: #6ea8fe; opacity: 0.85; filter: drop-shadow(0 10px 24px rgba(2,6,23,0.5)); }
+            body.theme-dark .label-oval-cta ellipse.echo{ stroke: rgba(110,168,254,0.6); }
+            @media (prefers-reduced-motion: reduce){ .label-oval-cta ellipse{ animation: none; stroke-dashoffset: 0; } }
+
+            /* Calendly CTA section */
+            .calendly-cta{
+                position: relative;
+                padding: 84px 0;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: #fff;
+                overflow: hidden;
+            }
+            .calendly-cta:before, .calendly-cta:after{
+                content:""; position:absolute; border-radius:50%; filter: blur(60px); pointer-events:none;
+            }
+            .calendly-cta:before{ width:420px; height:420px; background: rgba(255,255,255,0.18); top:-120px; left:-120px; }
+            .calendly-cta:after{ width:520px; height:520px; background: rgba(255,255,255,0.12); bottom:-160px; right:-140px; }
+            .calendly-cta h2{ color:#fff; font-weight:800; font-size:34px; line-height:1.15; letter-spacing:-0.02em; margin:0 0 14px; }
+            .calendly-cta p{ color:rgba(255,255,255,.92); font-size:18px; margin:0 0 26px; }
+            .calendly-cta .cta-btn{ display:inline-flex; align-items:center; gap:10px; padding:14px 26px; border-radius:999px; background:#ffffff; color:#3b3eff; font-weight:800; text-decoration:none; box-shadow:0 14px 40px rgba(0,0,0,.22); transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+            .calendly-cta .cta-btn:hover{ transform: translateY(-2px); box-shadow:0 18px 50px rgba(0,0,0,.28); }
+            .calendly-cta .cta-btn i{ font-size:18px; }
+            @media (max-width: 991.98px){ .calendly-cta{ padding: 70px 0; } .calendly-cta h2{ font-size:28px; } .calendly-cta .text-end{ text-align: left !important; margin-top: 6px; } }
+            body.theme-dark .calendly-cta{ background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); }
+
+            /* Compact, blended Calendly CTA for top of Contact page */
+            .calendly-inline{ margin-top: 32px; text-align: center; }
+            .calendly-inline .panel{
+                display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 16px;
+                padding: 12px 18px; border-radius: 14px;
+                background: linear-gradient(180deg, rgba(79,70,229,0.07), rgba(124,58,237,0.07));
+                border: 1px solid rgba(2,6,23,0.08);
+            }
+            .calendly-inline .msg{ font-weight: 700; letter-spacing: -0.01em; color: var(--heading); }
+            .calendly-inline .cal-btn{ display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px; background:#3b3eff; color:#fff; text-decoration:none; font-weight:800; box-shadow:0 10px 28px rgba(59,62,255,0.35); transition: transform .2s ease, box-shadow .2s ease; }
+            .calendly-inline .cal-btn:hover{ transform: translateY(-1px); box-shadow:0 14px 36px rgba(59,62,255,0.45); }
+            .calendly-inline .cal-btn i{ font-size:16px; }
+            body.theme-dark .calendly-inline .panel{ border-color: rgba(148,163,184,0.18); background: linear-gradient(180deg, rgba(59,62,255,0.08), rgba(124,58,237,0.08)); }
+
+            /* Enhanced contact cards styling and animations */
+            .contact-info-v1 .information-item{
+                transition: all 0.3s ease;
+                border-radius: 12px;
+                padding: 24px;
+                background: #fff;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+                border: 1px solid rgba(0,0,0,0.05);
+                position: relative;
+                overflow: hidden;
+            }
+            .contact-info-v1 .information-item:before{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, #667eea, #764ba2);
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform 0.3s ease;
+            }
+            .contact-info-v1 .information-item:hover{
+                transform: translateY(-8px);
+                box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            }
+            .contact-info-v1 .information-item:hover:before{
+                transform: scaleX(1);
+            }
+            .contact-info-v1 .information-item .icon{
+                transform: scale(1);
+                transition: transform 0.3s ease;
+            }
+            .contact-info-v1 .information-item:hover .icon{
+                transform: scale(1.1);
+            }
+            .contact-info-v1 .information-item .icon i{
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            body.theme-dark .contact-info-v1 .information-item{
+                background: #1f2937;
+                border-color: rgba(148,163,184,0.18);
+                box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            }
+            body.theme-dark .contact-info-v1 .information-item:hover{
+                box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+            }
+            @media (prefers-reduced-motion: reduce){
+                .contact-info-v1 .information-item{ transition: none; }
+                .contact-info-v1 .information-item:hover{ transform: none; }
+            }
+        </style>
     </head>
     <body>
         <!--====== Start Preloader ======-->
@@ -97,8 +298,8 @@
                         <div class="header-right-nav">
                             <ul>
                                 <li>
-                                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode" title="Toggle theme">
-                                        <i class="far fa-moon"></i>
+                                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+                                        <i class="fas fa-moon"></i>
                                     </button>
                                 </li>
                                 <li class="navbar-toggle-btn">
@@ -114,56 +315,37 @@
                 </div>
             </div>
         </header><!--====== End Header Section ======-->
-        <!--====== Start Page-banner section ======-->
-        <section class="page-banner page-banner-small bg_cover position-relative z-1">
-            <div class="shape shape-one scene"><span data-depth="1"><img src="assets/images/shape/shape-1.png" alt=""></span></div>
-            <div class="shape shape-two scene"><span data-depth="2"><img src="assets/images/shape/shape-2.png" alt=""></span></div>
-            <div class="shape shape-three scene"><span data-depth="3"><img src="assets/images/shape/shape-3.png" alt=""></span></div>
-            <div class="shape shape-four scene"><span data-depth="4"><img src="assets/images/shape/shape-2.png" alt=""></span></div>
+        <!-- Intro: animated Get In Touch right below nav -->
+        <section class="contact-intro">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-7">
-                        <div class="page-title text-center">
-                            <h1>Contact Us</h1>
-                            <ul class="breadcrumbs-link">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="active">Contact Us</li>
-                            </ul>
+                <div class="intro-wrap wow fadeInUp" data-wow-delay=".1s">
+                    <div class="contact-intro-cta" aria-label="Get In Touch">
+                        <svg viewBox="0 0 360 120" preserveAspectRatio="none" aria-hidden="true">
+                            <ellipse cx="180" cy="60" rx="172" ry="46"></ellipse>
+                            <ellipse class="echo" cx="180" cy="60" rx="168" ry="42"></ellipse>
+                        </svg>
+                        <span>Get In Touch</span>
+                    </div>
+                    <div class="calendly-inline wow fadeInUp" data-wow-delay=".15s">
+                        <div class="panel">
+                            <span class="msg">Claim Your FREE Consultation in Digital Marketing or Website Development.</span>
+                            <a class="cal-btn" href="https://calendly.com/nihalhu-astriftech/30min" target="_blank" rel="noopener nofollow">
+                                <i class="far fa-calendar-check"></i>
+                                Book 30‑min on Calendly
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!--====== End Page-banner section ======-->
-        <section class="contact-info-v1 pt-130">
+    <section class="contact-info-v1 pt-0">
             <div class="container">
-                <div class="row">
+        <!-- Heading removed; animated intro above provides the title -->
+                <div class="row justify-content-center">
                     <div class="col-lg-6">
-                        <div class="section-title mb-60">
-                            <span class="sub-title st-one">Get In Touch</span>
-                            <h2>Have Any Project on 
-                                Mind? Work Together</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="information-item info-item-one mb-30 wow fadeInUp" data-wow-delay=".15s">
-                                    <div class="icon">
-                                        <i class="far fa-map-marker-alt"></i>
-                                    </div>
-                                    <div class="info">
-                                        <h4>Location</h4>
-                                        <p>Bangalore, Karnataka,<br>
-                                            India
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="information-item info-item-two mb-30 wow fadeInUp" data-wow-delay=".20s">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12 col-md-6 col-sm-12">
+                                <div class="information-item info-item-two mb-30 wow fadeInUp" data-wow-delay=".15s">
                                     <div class="icon">
                                         <i class="far fa-envelope-open-text"></i>
                                     </div>
@@ -174,8 +356,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="information-item info-item-three mb-30 wow fadeInUp" data-wow-delay=".25s">
+                            <div class="col-lg-12 col-md-6 col-sm-12">
+                                <div class="information-item info-item-three mb-30 wow fadeInUp" data-wow-delay=".20s">
                                     <div class="icon">
                                         <i class="far fa-phone"></i>
                                     </div>
@@ -186,21 +368,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="information-item info-item-four mb-30 wow fadeInUp" data-wow-delay=".30s">
-                                    <div class="icon">
-                                        <i class="far fa-clock"></i>
-                                    </div>
-                                    <div class="info">
-                                        <h4>Working Hours</h4>
-                                        <p><span>Monday-Friday</span><span>09 am - 05 pm</span></p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-5">
-                        <div class="map-box mb-30">
+                    <div class="col-lg-6">
+                        <div class="map-box mb-30 wow fadeInUp" data-wow-delay=".25s">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.84916296526!2d77.6309395!3d12.9539974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1753271392268!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
@@ -215,7 +386,13 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="section-title text-center mb-55">
-                                    <span class="sub-title st-one">Message Us</span>
+                                    <div class="label-oval-cta" aria-label="Message Us">
+                                        <svg viewBox="0 0 360 120" preserveAspectRatio="none" aria-hidden="true">
+                                            <ellipse cx="180" cy="60" rx="172" ry="46"></ellipse>
+                                            <ellipse class="echo" cx="180" cy="60" rx="168" ry="42"></ellipse>
+                                        </svg>
+                                        <span>Message Us</span>
+                                    </div>
                                     <h2>Get Any Consultations ?
                                         Contact With Us</h2>
                                 </div>
@@ -260,6 +437,8 @@
                 </div>
             </div>
         </section><!--====== End Contact section ======-->
+
+        
         <!--====== Start Footer ======-->
         <footer class="footer-area page-footer light-gray-bg">
             <div class="container">
