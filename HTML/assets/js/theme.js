@@ -339,4 +339,95 @@
         $(this).parent('.pricing-nav-tab').removeClass('for-year');
     });
 
+    //====== Custom Cursor + Disable Right Click (global)
+    (function customCursorAndContextMenu(){
+        // Disable right-click sitewide
+        document.addEventListener('contextmenu', function(e){
+            e.preventDefault();
+        }, { passive: false });
+
+        // Respect reduced motion and only run on precise pointers (desktops/laptops)
+        var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        if (prefersReduced || !isFinePointer) return;
+
+        // Inject cursor styles
+        if (!document.getElementById('astriftech-cursor-styles')){
+            var styles = document.createElement('style');
+            styles.id = 'astriftech-cursor-styles';
+            styles.textContent = '\n'
+                + 'html, body{ cursor: none; }\n'
+                + 'body.has-custom-cursor *:not(input):not(textarea):not(select):not([contenteditable="true"]):not(iframe){ cursor: none !important; }\n'
+                + 'body.has-custom-cursor input, body.has-custom-cursor textarea, body.has-custom-cursor select, body.has-custom-cursor [contenteditable="true"]{ cursor: text !important; }\n'
+            + '#af-cursor{ position: fixed; top:0; left:0; width:0; height:0; pointer-events:none; z-index:9999; opacity:0; transition: opacity .25s ease; }\n'
+            + '#af-cursor.visible{ opacity:1; }\n'
+            + '#af-cursor.hidden{ opacity:0 !important; }\n'
+            + '#af-cursor .dot, #af-cursor .ring{ position:absolute; border-radius:50%; transform: translate(-50%, -50%); will-change: transform, width, height, background, border-color, box-shadow; }\n'
+            + '#af-cursor .dot{ width:6px; height:6px; background: var(--cursor-dot, #5956e9); box-shadow: 0 0 12px rgba(89,86,233,.6), 0 0 24px rgba(89,86,233,.3); }\n'
+            + '#af-cursor .ring{ width:32px; height:32px; border:2px solid var(--cursor-ring, rgba(89,86,233,.65)); box-shadow: 0 0 18px rgba(89,86,233,.35), inset 0 0 18px rgba(89,86,233,.15); transition: width .18s ease, height .18s ease, border-color .18s ease, box-shadow .18s ease; }\n'
+            + 'body.theme-dark #af-cursor .dot{ background: var(--accent-2,#60a5fa); box-shadow: 0 0 14px rgba(96,165,250,.8), 0 0 30px rgba(96,165,250,.4); }\n'
+            + 'body.theme-dark #af-cursor .ring{ border-color: rgba(96,165,250,.7); box-shadow: 0 0 22px rgba(32,119,255,.45), inset 0 0 18px rgba(96,165,250,.22); }\n'
+            + '#af-cursor.click .ring{ width:22px; height:22px; }\n'
+            + '#af-cursor.hover .ring{ width:40px; height:40px; border-color: var(--cursor-hover, rgba(59,62,255,.8)); box-shadow: 0 0 26px rgba(59,62,255,.45), inset 0 0 18px rgba(59,62,255,.2); }\n'
+            + 'body.theme-dark #af-cursor.hover .ring{ border-color: rgba(110,168,254,.9); box-shadow: 0 0 30px rgba(110,168,254,.55), inset 0 0 20px rgba(110,168,254,.25); }\n';
+            document.head.appendChild(styles);
+        }
+
+        // Build cursor elements
+        var cursor = document.createElement('div');
+        cursor.id = 'af-cursor';
+        var dot = document.createElement('div'); dot.className = 'dot';
+        var ring = document.createElement('div'); ring.className = 'ring';
+        cursor.appendChild(ring); cursor.appendChild(dot);
+        document.body.appendChild(cursor);
+        document.body.classList.add('has-custom-cursor');
+
+        var pos = { x: window.innerWidth/2, y: window.innerHeight/2 };
+        var target = { x: pos.x, y: pos.y };
+        var rafId = null;
+        var hoverSelectors = 'a, button, .btn, .main-btn, .btn-link, [role="button"], input[type="submit"], .navbar-toggler, .dd-trigger, .service-item, .information-item';
+        var isDown = false;
+
+        function onMove(e){
+            target.x = e.clientX; target.y = e.clientY;
+            cursor.classList.add('visible');
+            var isEditing = !!(e.target && (e.target.closest('input, textarea, select, [contenteditable="true"]')));
+            cursor.classList.toggle('hidden', isEditing);
+            var isHover = !!(e.target && e.target.closest(hoverSelectors));
+            cursor.classList.toggle('hover', isHover);
+        }
+        function onLeave(){ cursor.classList.remove('visible'); }
+        function onDown(){ isDown = true; cursor.classList.add('click'); }
+        function onUp(){ isDown = false; cursor.classList.remove('click'); }
+
+        document.addEventListener('mousemove', onMove, { passive: true });
+        document.addEventListener('mouseleave', onLeave, { passive: true });
+        document.addEventListener('mousedown', onDown, { passive: true });
+        document.addEventListener('mouseup', onUp, { passive: true });
+
+        // If hovering over iframes, show native cursor and hide custom one
+        function wireIframeCursorHandling(){
+            var iframes = document.querySelectorAll('iframe');
+            iframes.forEach(function(fr){
+                fr.addEventListener('mouseenter', function(){ cursor.classList.add('hidden'); }, { passive: true });
+                fr.addEventListener('mouseleave', function(){ cursor.classList.remove('hidden'); }, { passive: true });
+            });
+        }
+        wireIframeCursorHandling();
+
+        function animate(){
+            pos.x += (target.x - pos.x) * 0.16;
+            pos.y += (target.y - pos.y) * 0.16;
+            ring.style.transform = 'translate(' + pos.x + 'px,' + pos.y + 'px) translate(-50%, -50%)';
+            dot.style.transform = 'translate(' + target.x + 'px,' + target.y + 'px) translate(-50%, -50%)';
+            rafId = requestAnimationFrame(animate);
+        }
+        rafId = requestAnimationFrame(animate);
+
+        // Cleanup on page hide (SPA safety)
+        window.addEventListener('pagehide', function(){
+            cancelAnimationFrame(rafId);
+        });
+    })();
+
 })(window.jQuery);

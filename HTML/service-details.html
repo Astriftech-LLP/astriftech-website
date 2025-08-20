@@ -270,7 +270,7 @@
             }
 
             /* Services Intro: animated oval CTA like Team page */
-            .services-intro{ padding-top: 150px; padding-bottom: 80px; }
+            .services-intro{ padding-top: 150px; padding-bottom: 96px; }
             @media (min-width: 992px){ .services-intro{ padding-top: 160px; } }
             .services-intro .intro-wrap{ text-align: center; }
             .services-intro-cta{
@@ -322,13 +322,25 @@
             body.theme-dark .services-intro-cta ellipse.echo{ stroke: rgba(110,168,254,0.6); }
             @media (prefers-reduced-motion: reduce){ .services-intro-cta ellipse{ animation: none; stroke-dashoffset: 0; } }
             @media (max-width: 991.98px){
-                .services-intro{ padding-top: 135px; padding-bottom: 60px; }
+                .services-intro{ padding-top: 135px; padding-bottom: 72px; }
                 .services-intro-cta{ font-size: 28px; padding: 20px 36px; }
                 .services-intro-cta svg{ inset: -18px -32px; width: calc(100% + 64px); height: calc(100% + 36px); }
             }
             @media (max-width: 575.98px){
                 .services-intro-cta{ font-size: 22px; padding: 14px 24px; }
                 .services-intro-cta svg{ inset: -12px -22px; width: calc(100% + 44px); height: calc(100% + 24px); }
+            }
+
+            /* Subtext under Our Services heading */
+            .services-intro .intro-subtext{
+                margin-top: 14px;
+                font-size: 18px;
+                line-height: 1.55;
+                color: var(--heading);
+                opacity: .8;
+                max-width: 860px;
+                margin-left: auto;
+                margin-right: auto;
             }
         </style>
     </head>
@@ -439,6 +451,10 @@
                         </svg>
                         <span>Our Services</span>
                     </div>
+                    <p class="intro-subtext wow fadeInUp" data-wow-delay=".18s">
+                        We craft reliable, scalable solutions across web, automation, and growth. Pick what you need—
+                        we’ll tailor it for your business goals.
+                    </p>
                 </div>
             </div>
         </section>
@@ -595,7 +611,7 @@
                                 <ul class="social-nav">
                                     <li><a href="https://www.instagram.com/astriftech?igsh=em1iY2lseTBzOXdw"><i class="fab fa-instagram"></i>Instagram</a></li>
                                     <li><a href="https://www.linkedin.com/company/astriftech/"><i class="fab fa-linkedin"></i>LinkedIn</a></li>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i>Facebook</a></li>
+                                    <li><a href="https://www.facebook.com/share/1GEoKJW3q5/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i>Facebook</a></li>
                                 </ul>
                             </div>
                         </div>
