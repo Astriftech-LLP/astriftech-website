@@ -135,6 +135,7 @@
                 background: rgba(255,255,255,0.15);
                 color: #93c5fd;
             }
+            body.theme-dark .service-item.service-style-one .text .list-style-two.use-fa li i{ color:#c7d2fe; }
             body.theme-dark .service-item.service-style-one .icon{
                 background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
                 box-shadow: 0 10px 24px rgba(0,0,0,0.35);
@@ -206,6 +207,25 @@
             /* Respect reduced motion */
             @media (prefers-reduced-motion: reduce){
                 body.theme-dark .service-item.service-style-one{ animation: none; }
+            }
+
+            /* Fix potential blue line above services section */
+            .service-area {
+                border-top: none !important;
+                position: relative;
+                z-index: 1;
+                margin-top: 0 !important;
+            }
+            .service-area::before {
+                display: none !important;
+            }
+            /* Also ensure hero section doesn't have any bottom borders */
+            .hero-banner-v1, .hero-banner-v1::after {
+                border-bottom: none !important;
+            }
+            /* Remove any potential section separators */
+            .hero-banner-v1 + * {
+                border-top: none !important;
             }
 
             /* Fix hero video positioning and responsiveness */
@@ -602,11 +622,11 @@ AstrifTech LLP was founded by four passionate innovators with a mission to make 
                             </div>
                             <div class="text">
                                 <h3 class="title"><a href="service-details.html">Website Development</a></h3>
-                                <ul class="list-style-two">
-                                    <li>Wordpress and Shopify sites</li>
-                                    <li>Full stack development </li>
-                                    <li>Forum & Community Websites</li>
-                                    <li>Landing webpages </li>
+                                <ul class="list-style-two use-fa">
+                                    <li><i class="fas fa-shopping-cart"></i><span>Wordpress and Shopify sites</span></li>
+                                    <li><i class="fas fa-laptop-code"></i><span>Full stack development</span></li>
+                                    <li><i class="fas fa-users"></i><span>Forum &amp; Community Websites</span></li>
+                                    <li><i class="fas fa-file-alt"></i><span>Landing webpages</span></li>
                                 </ul>
                                 <a href="service-details.html" class="btn-link">Read More</a>
                             </div>
@@ -619,10 +639,10 @@ AstrifTech LLP was founded by four passionate innovators with a mission to make 
                             </div>
                             <div class="text">
                                 <h3 class="title"><a href="service-details.html">Social Media Management</a></h3>
-                                <ul class="list-style-two">
-                                    <li>Content Creation & Scheduling</li>
-                                    <li>Analytics & Reporting</li>
-                                    <li>Engagement and reach enhancement</li>
+                                <ul class="list-style-two use-fa">
+                                    <li><i class="fas fa-pencil-alt"></i><span>Content Creation &amp; Scheduling</span></li>
+                                    <li><i class="fas fa-chart-line"></i><span>Analytics &amp; Reporting</span></li>
+                                    <li><i class="fas fa-thumbs-up"></i><span>Engagement and reach enhancement</span></li>
                                 </ul>
                                 <a href="service-details.html" class="btn-link">Read More</a>
                             </div>
@@ -635,11 +655,11 @@ AstrifTech LLP was founded by four passionate innovators with a mission to make 
                             </div>
                             <div class="text">
                                 <h3 class="title"><a href="service-details.html">SEO (Search Engine Optimization)</a></h3>
-                                <ul class="list-style-two">
-                                    <li>Audit & Monitoring</li>
-                                    <li>On-site SEO plugins</li>
-                                    <li>Site Speed/CDN</li>
-                                    <li>Performance Tracking and Analytics</li>
+                                <ul class="list-style-two use-fa">
+                                    <li><i class="fas fa-search"></i><span>Audit &amp; Monitoring</span></li>
+                                    <li><i class="fas fa-plug"></i><span>On-site SEO plugins</span></li>
+                                    <li><i class="fas fa-tachometer-alt"></i><span>Site Speed/CDN</span></li>
+                                    <li><i class="fas fa-chart-bar"></i><span>Performance Tracking and Analytics</span></li>
                                 </ul>
                                 <a href="service-details.html" class="btn-link">Read More</a>
                             </div>
@@ -654,10 +674,10 @@ AstrifTech LLP was founded by four passionate innovators with a mission to make 
             </div>
             <div class="text">
                 <h3 class="title"><a href="service-details.html">Chatbot Development</a></h3>
-                <ul class="list-style-two">
-                    <li>Customer Support Chatbots</li>
-                    <li>Lead Generation & Qualification Bots</li>
-                    <li>Transactional & Booking Chatbots</li>
+                <ul class="list-style-two use-fa">
+                    <li><i class="fas fa-headset"></i><span>Customer Support Chatbots</span></li>
+                    <li><i class="fas fa-user-plus"></i><span>Lead Generation &amp; Qualification Bots</span></li>
+                    <li><i class="fas fa-shopping-cart"></i><span>Transactional &amp; Booking Chatbots</span></li>
                 </ul>
                 <a href="service-details.html" class="btn-link">Read More</a>
             </div>
@@ -670,12 +690,12 @@ AstrifTech LLP was founded by four passionate innovators with a mission to make 
             </div>
             <div class="text">
                 <h3 class="title"><a href="service-details.html">Paid Media Advertising</a></h3>
-                <ul class="list-style-two">
-                    <li>Google ads</li>
-                    <li>Meta ads</li>
-                    <li>LinkedIn ads</li>
-                    <li>Twitter/X Ads</li>
-                    <li>Microsoft Ads</li>
+                <ul class="list-style-two use-fa">
+                    <li><i class="fab fa-google"></i><span>Google Ads</span></li>
+                    <li><i class="fab fa-facebook"></i><span>Meta Ads</span></li>
+                    <li><i class="fab fa-linkedin"></i><span>LinkedIn Ads</span></li>
+                    <li><i class="fab fa-twitter"></i><span>Twitter/X Ads</span></li>
+                    <li><i class="fab fa-microsoft"></i><span>Microsoft Ads</span></li>
                 </ul>
                 <a href="service-details.html" class="btn-link">Read More</a>
             </div>
@@ -688,10 +708,10 @@ AstrifTech LLP was founded by four passionate innovators with a mission to make 
             </div>
             <div class="text">
                 <h3 class="title"><a href="service-details.html">Influencer Marketing</a></h3>
-                <ul class="list-style-two">
-                    <li>Influencer Discovery & Selection</li>
-                    <li>Outreach & Relationship Management</li>
-                    <li>Campaign Briefing & Content Planning</li>
+                <ul class="list-style-two use-fa">
+                    <li><i class="fas fa-search"></i><span>Influencer Discovery &amp; Selection</span></li>
+                    <li><i class="fas fa-handshake"></i><span>Outreach &amp; Relationship Management</span></li>
+                    <li><i class="fas fa-file-alt"></i><span>Campaign Briefing &amp; Content Planning</span></li>
                 </ul>
                 <a href="service-details.html" class="btn-link">Read More</a>
             </div>
