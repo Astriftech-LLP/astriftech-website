@@ -16,6 +16,9 @@
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://astriftech.com/">
         <meta property="og:image" content="https://astriftech.com/assets/images/logo/Astriftech-LOGO1.png">
+        <meta property="og:image:width" content="400">
+        <meta property="og:image:height" content="400">
+        <meta property="og:image:type" content="image/png">
         <meta property="og:site_name" content="AstrifTech LLP">
         <meta property="og:locale" content="en_US">
         
@@ -45,9 +48,17 @@
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "AstrifTech LLP",
+            "alternateName": "AstrifTech",
             "description": "Leading AI solutions, web development, and digital marketing agency specializing in innovative technology solutions.",
             "url": "https://astriftech.com/",
-            "logo": "https://astriftech.com/assets/images/logo/Astriftech-LOGO1.png",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://astriftech.com/assets/images/logo/Astriftech-LOGO1.png",
+                "width": 400,
+                "height": 400,
+                "caption": "AstrifTech LLP Logo"
+            },
+            "image": "https://astriftech.com/assets/images/logo/Astriftech-LOGO1.png",
             "foundingDate": "2024",
             "address": {
                 "@type": "PostalAddress",
@@ -90,6 +101,16 @@
                 "Software Development",
                 "Machine Learning"
             ]
+        }
+        </script>
+        
+        <!-- Logo Structured Data for Google Search -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "url": "https://astriftech.com",
+            "logo": "https://astriftech.com/assets/images/logo/Astriftech-LOGO1.png"
         }
         </script>
         
