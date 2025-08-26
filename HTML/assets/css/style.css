@@ -82,6 +82,10 @@
 }
 html{
     font-size: 100%;
+    transform: scale(0.8);
+    transform-origin: top left;
+    width: 125%; /* Compensate for the scale to maintain full width */
+    height: 125%; /* Compensate for the scale to maintain full height */
 }
 a{
     color: inherit;
