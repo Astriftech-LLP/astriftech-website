@@ -382,14 +382,17 @@
         document.body.appendChild(cursor);
         document.body.classList.add('has-custom-cursor');
 
-        var pos = { x: window.innerWidth/2, y: window.innerHeight/2 };
+        var pos = { x: (window.innerWidth/2) / 0.8, y: (window.innerHeight/2) / 0.8 };
         var target = { x: pos.x, y: pos.y };
         var rafId = null;
         var hoverSelectors = 'a, button, .btn, .main-btn, .btn-link, [role="button"], input[type="submit"], .navbar-toggler, .dd-trigger, .service-item, .information-item';
         var isDown = false;
 
         function onMove(e){
-            target.x = e.clientX; target.y = e.clientY;
+            // Adjust coordinates for zoom factor (0.8 = 80%)
+            var zoomFactor = 0.8;
+            target.x = e.clientX / zoomFactor; 
+            target.y = e.clientY / zoomFactor;
             cursor.classList.add('visible');
             var isEditing = !!(e.target && (e.target.closest('input, textarea, select, [contenteditable="true"]')));
             cursor.classList.toggle('hidden', isEditing);
