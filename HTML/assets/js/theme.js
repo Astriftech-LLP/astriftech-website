@@ -99,7 +99,17 @@
 
     //===== Prealoder
     $(window).on('load', function(event) {
-        $('.preloader').delay(500).fadeOut('500');
+        // Check if this is the initial page load (not from navigation)
+        const isInitialLoad = !sessionStorage.getItem('hasVisited');
+        
+        if (isInitialLoad) {
+            // First time visiting the site - hide preloader immediately
+            $('.preloader').hide();
+            sessionStorage.setItem('hasVisited', 'true');
+        } else {
+            // Subsequent page loads - show preloader with normal delay
+            $('.preloader').delay(500).fadeOut('500');
+        }
     })
     
     //===== Sticky

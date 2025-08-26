@@ -65,10 +65,28 @@
     .hero-banner-v1 .hero-content p {
         padding-right: 10%;
     }
-    .hero-banner-v1 .hero-img,
+    /* Keep only the first hero image hidden on smaller screens; show the video (hero-img-two) */
+    .hero-banner-v1 .hero-img.hero-img-one,
     .cta-area-v1 .cta-img,
     .testimonial-area-v1 .shape-img{
         display: none;
+    }
+    /* Make hero video responsive and visible on tablets/phones */
+    .hero-banner-v1 .hero-img.hero-img-two{
+        display: block;
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin: 10px auto 0;
+        z-index: 1;
+        max-width: 92vw;
+    }
+    .hero-banner-v1 .hero-img.hero-img-two video{
+        width: 100%;
+        height: auto;
+        max-width: 520px;
+        transform: none !important;
+        border-radius: 20px;
     }
     .testimonial-area-v1 .testimonial-item .testimonial-content h3 {
         font-size: 32px;
@@ -81,11 +99,21 @@
         padding-left: 70px;
     }
     .service-item {
-        padding: 50px 30px 40px;
+        padding: 28px 22px 26px;
+        margin-bottom: 28px !important; /* extra separation between cards */
+    }
+    /* Add vertical gap between auto-wrapping cols */
+    .service-area .row.justify-content-center{
+        row-gap: 24px;
+    }
+    .service-item .text .list-style-two li{
+        margin-bottom: 10px;
+        line-height: 1.5;
     }
     .service-item .text h3.title {
-        font-size: 24px;
-        line-height: 35px;
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 10px;
     }
     .service-item .text .list-style-two li {
         font-size: 15px;

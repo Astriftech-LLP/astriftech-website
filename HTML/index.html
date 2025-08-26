@@ -4,7 +4,7 @@
         <!--====== Required meta tags ======-->
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="AstrifTech LLP - Leading AI solutions, web development, and digital marketing agency. Transform your business with innovative technology solutions and expert digital services.">
+    <meta name="description" content="AI solutions, website development, SEO, social media, and chatbots for growing brands. AstrifTech delivers fast, modern, and measurable results.">
         <meta name="keywords" content="AI solutions, web development, digital marketing, technology agency, software development, Bengaluru, Karnataka, India, artificial intelligence, machine learning">
         <meta name="author" content="AstrifTech LLP">
         <meta name="robots" content="index, follow">
@@ -19,13 +19,13 @@
         <meta property="og:image:width" content="400">
         <meta property="og:image:height" content="400">
         <meta property="og:image:type" content="image/png">
-        <meta property="og:site_name" content="AstrifTech LLP">
+    <meta property="og:site_name" content="AstrifTech">
         <meta property="og:locale" content="en_US">
         
         <!-- Twitter Card Meta Tags -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="AstrifTech LLP - AI Solutions & Digital Innovation">
-        <meta name="twitter:description" content="Leading technology agency specializing in AI solutions, web development, and digital marketing.">
+    <meta name="twitter:description" content="AI solutions, website development, SEO, social media, and chatbots for growing brands. AstrifTech delivers modern results.">
         <meta name="twitter:image" content="https://astriftech.com/assets/images/logo/Astriftech-LOGO1.png">
         
         <!-- Canonical URL -->
@@ -40,9 +40,14 @@
         <!--====== Title ======-->
         <title>AstrifTech LLP - AI Solutions, Web Development & Digital Marketing Agency</title>
         <!--====== Favicon Icon ======-->
-        <link rel="shortcut icon" href="assets/images/Astriftech Logo_small.png" type="image/png">
+    <!-- Favicons for Google Search (site icon) and browsers -->
+    <link rel="icon" href="/assets/images/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/logo/Astriftech-LOGO1.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo/Astriftech-LOGO1.png">
+    <meta name="application-name" content="AstrifTech">
+    <meta name="theme-color" content="#0f172a">
         
-        <!-- JSON-LD Structured Data -->
+                <!-- JSON-LD Structured Data -->
         <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -103,9 +108,24 @@
             ]
         }
         </script>
+                <!-- Site name for Google Search "Site names" feature -->
+                <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org",
+                    "@type": "WebSite",
+                    "name": "AstrifTech",
+                    "alternateName": "AstrifTech LLP",
+                    "url": "https://astriftech.com/",
+                    "potentialAction": {
+                        "@type": "SearchAction",
+                        "target": "https://astriftech.com/?s={search_term_string}",
+                        "query-input": "required name=search_term_string"
+                    }
+                }
+                </script>
         
         <!-- Logo Structured Data for Google Search -->
-        <script type="application/ld+json">
+    <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "Organization",
@@ -295,9 +315,9 @@
             }
 
             @media (max-width: 768px) {
-                .hero-banner-v1 .hero-img.hero-img-two {
-                    display: none !important; /* Hide on mobile for better performance and layout */
-                }
+                /* Show video on mobile too, but centered and sized */
+                .hero-banner-v1 .hero-img.hero-img-two { display: block !important; position: relative !important; bottom: auto !important; right: auto !important; margin: 8px auto 0 !important; }
+                .hero-banner-v1 .hero-img.hero-img-two video { transform: none !important; max-width: 85vw !important; width: 100% !important; height: auto !important; border-radius: 16px; }
             }
 
             /* Enhanced hover effects for Let's Talk button */
@@ -524,15 +544,6 @@
                         <div class="nav-menu">
                             <!-- Navbar Close -->
                             <div class="navbar-close"><i class="far fa-times"></i></div>
-                            <!-- Nav Search -->
-                            <div class="nav-search">
-                                <form>
-                                    <div class="form_group">
-                                        <input type="email" class="form_control" placeholder="Search Here" name="email" required>
-                                        <button class="search-btn"><i class="fas fa-search"></i></button>
-                                    </div>
-                                </form>
-                            </div>
                             <!-- Main Menu -->
                             <nav class="main-menu">
                                 <ul>

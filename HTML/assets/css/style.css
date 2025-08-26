@@ -619,6 +619,9 @@ button {
         -ms-flex-pack: center;
             justify-content: center;
     z-index: 99999;
+    /* Override zoom scaling for preloader */
+    zoom: 1.25; /* Compensate for body zoom: 0.8 */
+    transform-origin: center center;
 }
 .preloader .loader {
     margin: 0 auto;
@@ -1202,7 +1205,7 @@ button {
 }
 .header-navigation.breakpoint-on .nav-menu {
     text-align: left;
-    background-color: #fff;
+    background-color: #fff; /* default light */
     position: fixed;
     top: 0;
     left: -300px;
@@ -1219,6 +1222,31 @@ button {
     overflow-x: hidden;
     overflow-y: scroll;
     padding-top: 70px;
+}
+/* Dark theme for mobile nav drawer */
+body.theme-dark .header-navigation.breakpoint-on .nav-menu {
+    background-color: #0b1224;
+    box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+    /* Match light-mode side drawer behavior */
+    width: 300px;
+    left: -300px;
+    z-index: 10001; /* above .nav-overlay */
+}
+body.theme-dark .header-navigation.breakpoint-on .nav-menu.menu-on {
+    left: 0;
+}
+body.theme-dark .header-navigation.breakpoint-on .nav-menu .main-menu ul li {
+    border-bottom-color: rgba(148,163,184,0.15);
+}
+body.theme-dark .header-navigation.breakpoint-on .nav-menu .main-menu ul li a {
+    color: #e2e8f0 !important; /* Force visibility */
+    border-bottom-color: rgba(148,163,184,0.12);
+}
+body.theme-dark .header-navigation.breakpoint-on .nav-menu .main-menu ul li a:hover {
+    color: #60a5fa !important; /* Hover state */
+}
+body.theme-dark .header-navigation.breakpoint-on .nav-menu .main-menu ul li .sub-menu li a {
+    color: #cbd5e1 !important;
 }
 .header-navigation.breakpoint-on .nav-menu.menu-on {
     left: 0;
@@ -1322,6 +1350,10 @@ button {
     cursor: pointer;
     display: block;
 }
+/* Dark theme: make hamburger bars visible */
+body.theme-dark .header-navigation .navbar-toggler span {
+    background-color: #e2e8f0;
+}
 .header-navigation .navbar-toggler.active span:nth-of-type(1) {
     -webkit-transform: rotate3d(0, 0, 1, 45deg);
             transform: rotate3d(0, 0, 1, 45deg);
@@ -1352,11 +1384,14 @@ button {
     color: #fff;
     font-size: 20px;
 }
+/* Dark theme: ensure contrast of close icon on dark drawer bg */
+body.theme-dark .header-navigation .navbar-close { background: #111827; }
+body.theme-dark .header-navigation .navbar-close i { color: #e2e8f0; }
 .navigation-white .navbar-toggler span{
     background-color: #fff;
 }
 .header-navigation.breakpoint-on .nav-menu .nav-search{
-    display: block;
+    display: none; /* Hide search bar in mobile menu */
 }
 .nav-menu .nav-search{
     display: none;
@@ -1367,11 +1402,20 @@ button {
     height: 60px;
     padding: 0 20px;
 }
+/* Dark theme: search input inside mobile nav */
+body.theme-dark .nav-menu .nav-search .form_group .form_control{
+    background-color: #0f172a;
+    border-color: rgba(148,163,184,0.25);
+    color: #e2e8f0;
+}
 .nav-menu .nav-search .form_group .search-btn{
     position: absolute;
     top: 17px;
     right: 20px;
     background-color: transparent;
+}
+body.theme-dark .nav-menu .nav-search .form_group .search-btn{
+    color: #e2e8f0;
 }
 
 /* Header Right Nav */
@@ -5134,6 +5178,21 @@ body.theme-dark .blend-header .header-navigation.sticky{
     .footer-area .footer-widget .widget{ text-align:center; }
     .footer-area .newsletter-widget .form_group{ flex-direction:column; }
     .footer-area .newsletter-widget .form_group .main-btn{ width:100%; }
+}
+/* Additional mobile fixes for footer form */
+@media (max-width: 767px){
+    .footer-area .newsletter-widget .form_group{ gap: 12px; }
+    .footer-area .newsletter-widget .form_group .main-btn{ 
+        padding: 10px 20px;
+        font-size: 14px;
+        width: auto;
+        max-width: 120px;
+        margin: 0 auto;
+    }
+    .footer-area .newsletter-widget .form_group .form_control{
+        font-size: 14px;
+        padding: 10px 14px;
+    }
 }
 /* Dark theme blending */
 body.theme-dark .footer-area.page-footer:before{
