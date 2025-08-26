@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--====== Required meta tags ======-->
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="description" content="Blog section coming soon - AstrifTech LLP. Stay tuned for our latest insights and articles on AI, web development, and digital marketing.">
+        <meta name="keywords" content="AstrifTech blog, AI insights, web development articles, digital marketing tips, technology blog coming soon">
+        <meta name="author" content="AstrifTech LLP">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="Blog Coming Soon | AstrifTech LLP">
+        <meta property="og:description" content="Our blog featuring AI insights, web development tutorials, and digital marketing tips is coming soon.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://astriftech.com/coming-soon.html">
+        <meta property="og:image" content="https://astriftech.com/assets/images/logo/Astriftech-LOGO1.png">
+        
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://astriftech.com/coming-soon.html">
+        
+        <!--====== Title ======-->
+        <title>Blog Coming Soon - AI & Tech Insights | AstrifTech LLP</title>
+        <!--====== Favicon Icon ======-->
+        <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
+        <!--====== Default css ======-->
+        <link rel="stylesheet" href="assets/css/default.css">
+        <!--====== Style css ======-->
+        <link rel="stylesheet" href="assets/css/style.css">
+        <!--====== Responsive css ======-->
+        <link rel="stylesheet" href="assets/css/responsive.css">
+        
+        <!-- Initialize dark mode to prevent flash of light content -->
+        <script>
+            (function() {
+                var stored = localStorage.getItem('astriftech-theme');
+                if (stored === null || stored === 'dark') {
+                    document.documentElement.classList.add('theme-dark');
+                    document.body.classList.add('theme-dark');
+                }
+            })();
+        </script>
+        
+        <style>
+            /* Dark preloader by default */
+            .preloader {
+                background-color: #0f172a !important;
+            }
+            .preloader .pre-shadow {
+                background: rgba(255, 255, 255, 0.1) !important;
+                opacity: 0.3 !important;
+            }
+            /* Light mode preloader */
+            body:not(.theme-dark) .preloader {
+                background-color: #fff !important;
+            }
+            body:not(.theme-dark) .preloader .pre-shadow {
+                background: #000 !important;
+                opacity: 0.1 !important;
+            }
+
+            /* Coming Soon Page Styles */
+            .coming-soon-section {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                overflow: hidden;
+            }
+
+            .coming-soon-section:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="25" cy="25" r="0.3" fill="rgba(255,255,255,0.05)"/><circle cx="75" cy="75" r="0.4" fill="rgba(255,255,255,0.08)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+                opacity: 0.3;
+            }
+
+            .coming-soon-content {
+                text-align: center;
+                position: relative;
+                z-index: 2;
+                max-width: 600px;
+                padding: 0 20px;
+            }
+
+            .coming-soon-icon {
+                font-size: 80px;
+                color: rgba(255, 255, 255, 0.9);
+                margin-bottom: 30px;
+                animation: float 3s ease-in-out infinite;
+            }
+
+            @keyframes float {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-10px); }
+            }
+
+            .coming-soon-title {
+                font-size: 48px;
+                font-weight: 800;
+                color: #fff;
+                margin-bottom: 20px;
+                line-height: 1.2;
+            }
+
+            .coming-soon-subtitle {
+                font-size: 24px;
+                color: rgba(255, 255, 255, 0.9);
+                margin-bottom: 15px;
+                font-weight: 600;
+            }
+
+            .coming-soon-description {
+                font-size: 18px;
+                color: rgba(255, 255, 255, 0.8);
+                margin-bottom: 40px;
+                line-height: 1.6;
+            }
+
+            .coming-soon-buttons {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .coming-soon-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                padding: 14px 28px;
+                background: rgba(255, 255, 255, 0.15);
+                color: #fff;
+                text-decoration: none;
+                border-radius: 50px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                border: 2px solid rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(10px);
+            }
+
+            .coming-soon-btn:hover {
+                background: rgba(255, 255, 255, 0.25);
+                transform: translateY(-2px);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+                color: #fff;
+                text-decoration: none;
+            }
+
+            .coming-soon-btn.primary {
+                background: #fff;
+                color: #5956e9;
+                border-color: #fff;
+            }
+
+            .coming-soon-btn.primary:hover {
+                background: #f8f9fa;
+                color: #5956e9;
+            }
+
+            /* Floating particles */
+            .particle {
+                position: absolute;
+                border-radius: 50%;
+                pointer-events: none;
+                opacity: 0.1;
+                animation: particle-float 20s infinite linear;
+            }
+
+            .particle:nth-child(1) {
+                width: 20px;
+                height: 20px;
+                background: #fff;
+                top: 20%;
+                left: 20%;
+                animation-delay: 0s;
+            }
+
+            .particle:nth-child(2) {
+                width: 15px;
+                height: 15px;
+                background: #fff;
+                top: 60%;
+                left: 80%;
+                animation-delay: 5s;
+            }
+
+            .particle:nth-child(3) {
+                width: 25px;
+                height: 25px;
+                background: #fff;
+                top: 80%;
+                left: 10%;
+                animation-delay: 10s;
+            }
+
+            @keyframes particle-float {
+                0% { transform: translateY(0px) rotate(0deg); }
+                33% { transform: translateY(-20px) rotate(120deg); }
+                66% { transform: translateY(20px) rotate(240deg); }
+                100% { transform: translateY(0px) rotate(360deg); }
+            }
+
+            /* Dark mode styles */
+            body.theme-dark .coming-soon-section {
+                background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            }
+
+            body.theme-dark .coming-soon-title,
+            body.theme-dark .coming-soon-subtitle,
+            body.theme-dark .coming-soon-description {
+                color: #e2e8f0;
+            }
+
+            body.theme-dark .coming-soon-icon {
+                color: #64748b;
+            }
+
+            /* Responsive design */
+            @media (max-width: 768px) {
+                .coming-soon-title {
+                    font-size: 36px;
+                }
+                .coming-soon-subtitle {
+                    font-size: 20px;
+                }
+                .coming-soon-description {
+                    font-size: 16px;
+                }
+                .coming-soon-icon {
+                    font-size: 60px;
+                }
+                .coming-soon-buttons {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!--====== Start Preloader ======-->
+        <div class="preloader">
+            <div class="loader">
+                <div class="pre-shadow"></div>
+                <div class="pre-box"></div>
+            </div>
+        </div>
+        <!--====== End Preloader ======-->
+
+        <!--====== Start Header Section ======-->
+        <header class="theme-header transparent-header">
+            <!-- header Navigation -->
+            <div class="header-navigation navigation-style-v1">
+                <div class="nav-overlay"></div>
+                <div class="container-fluid">
+                    <div class="primary-menu">
+                        <div class="site-branding">
+                            <a href="index.html" class="brand-logo"><img src="assets/images/logo/Astriftech-LOGO1.png" alt="AstrifTech Logo"></a>
+                        </div>
+                        <div class="nav-menu">
+                            <!-- Navbar Close -->
+                            <div class="navbar-close"><i class="far fa-times"></i></div>
+                            <!-- Nav Search -->
+                            <div class="nav-search">
+                                <form>
+                                    <div class="form_group">
+                                        <input type="email" class="form_control" placeholder="Search Here" name="email" required>
+                                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- Main Menu -->
+                            <nav class="main-menu">
+                                <ul>
+                                    <li class="menu-item"><a href="index.html" class="nav-link">Home</a></li>
+                                    <li class="menu-item"><a href="service-details.html" class="nav-link">Services</a></li>
+                                    <li class="menu-item"><a href="team.html" class="nav-link">About Us</a></li>
+                                    <li class="menu-item"><a href="coming-soon.html" class="active nav-link">Blogs</a></li>
+                                    <li class="menu-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="header-right-nav">
+                            <ul>
+                                <li>
+                                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+                                        <i class="fas fa-sun"></i>
+                                    </button>
+                                </li>
+                                <li class="navbar-toggle-btn">
+                                    <div class="navbar-toggler">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header><!--====== End Header Section ======-->
+
+        <!--====== Start Coming Soon Section ======-->
+        <section class="coming-soon-section">
+            <!-- Floating particles -->
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            
+            <div class="coming-soon-content">
+                <div class="coming-soon-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h1 class="coming-soon-title">Coming Soon</h1>
+                <h2 class="coming-soon-subtitle">Our Blog is Under Development</h2>
+                <p class="coming-soon-description">
+                    We're working hard to bring you amazing content! Our blog section will feature the latest insights, tutorials, and industry trends in AI, web development, and digital marketing.
+                </p>
+                <div class="coming-soon-buttons">
+                    <a href="index.html" class="coming-soon-btn primary">
+                        <i class="fas fa-home"></i>
+                        Back to Home
+                    </a>
+                    <a href="contact.html" class="coming-soon-btn">
+                        <i class="fas fa-envelope"></i>
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </section><!--====== End Coming Soon Section ======-->
+
+        <!--====== Jquery js ======-->
+        <script src="assets/vendor/jquery-3.6.0.min.js"></script>
+        <!--====== Bootstrap js ======-->
+        <script src="assets/vendor/popper/popper.min.js"></script>
+        <!--====== Bootstrap js ======-->
+        <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!--====== Slick js ======-->
+        <script src="assets/vendor/slick/slick.min.js"></script>
+        <!--====== Magnific js ======-->
+        <script src="assets/vendor/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+        <!--====== Isotope js ======-->
+        <script src="assets/vendor/isotope.min.js"></script>
+        <!--====== Imagesloaded js ======-->
+        <script src="assets/vendor/imagesloaded.min.js"></script>
+        <!--====== Counterup js ======-->
+        <script src="assets/vendor/jquery.counterup.min.js"></script>
+        <!--====== Waypoints js ======-->
+        <script src="assets/vendor/jquery.waypoints.js"></script>
+        <!--====== Nice-select js ======-->
+        <script src="assets/vendor/nice-select/js/jquery.nice-select.min.js"></script>
+        <!--====== WOW js ======-->
+        <script src="assets/vendor/wow.min.js"></script>
+        <!--====== Parallax js ======-->
+        <script src="assets/vendor/parallax.min.js"></script>
+        <!--====== Main js ======-->
+        <script src="assets/js/theme.js"></script>
+        <!--====== Dark mode js ======-->
+        <script src="assets/js/dark-mode.js"></script>
+    </body>
+</html>

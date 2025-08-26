@@ -4,18 +4,112 @@
         <!--====== Required meta tags ======-->
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="">
+        <meta name="description" content="AstrifTech LLP - Leading AI solutions, web development, and digital marketing agency. Transform your business with innovative technology solutions and expert digital services.">
+        <meta name="keywords" content="AI solutions, web development, digital marketing, technology agency, software development, Bengaluru, Karnataka, India, artificial intelligence, machine learning">
+        <meta name="author" content="AstrifTech LLP">
+        <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="AstrifTech LLP - AI Solutions & Digital Innovation">
+        <meta property="og:description" content="Leading technology agency specializing in AI solutions, web development, and digital marketing. Transform your business with our innovative digital services.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://astriftech.com/">
+        <meta property="og:image" content="https://astriftech.com/assets/images/logo/Astriftech-LOGO1.png">
+        <meta property="og:site_name" content="AstrifTech LLP">
+        <meta property="og:locale" content="en_US">
+        
+        <!-- Twitter Card Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="AstrifTech LLP - AI Solutions & Digital Innovation">
+        <meta name="twitter:description" content="Leading technology agency specializing in AI solutions, web development, and digital marketing.">
+        <meta name="twitter:image" content="https://astriftech.com/assets/images/logo/Astriftech-LOGO1.png">
+        
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://astriftech.com/">
+        
+        <!-- Additional SEO Meta Tags -->
+        <meta name="geo.region" content="IN-KA">
+        <meta name="geo.placename" content="Bengaluru">
+        <meta name="geo.position" content="12.9716;77.5946">
+        <meta name="ICBM" content="12.9716, 77.5946">
+        
         <!--====== Title ======-->
-        <title>Astriftech LLP</title>
+        <title>AstrifTech LLP - AI Solutions, Web Development & Digital Marketing Agency</title>
         <!--====== Favicon Icon ======-->
         <link rel="shortcut icon" href="assets/images/Astriftech Logo_small.png" type="image/png">
+        
+        <!-- JSON-LD Structured Data -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "AstrifTech LLP",
+            "description": "Leading AI solutions, web development, and digital marketing agency specializing in innovative technology solutions.",
+            "url": "https://astriftech.com/",
+            "logo": "https://astriftech.com/assets/images/logo/Astriftech-LOGO1.png",
+            "foundingDate": "2024",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Bengaluru",
+                "addressRegion": "Karnataka",
+                "addressCountry": "India"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-6361606828",
+                "contactType": "customer service",
+                "email": "hello@astriftech.com"
+            },
+            "sameAs": [
+                "https://www.linkedin.com/company/astriftech-llp",
+                "https://github.com/Astriftech-LLP"
+            ],
+            "founder": [
+                {
+                    "@type": "Person",
+                    "name": "Nihal"
+                },
+                {
+                    "@type": "Person", 
+                    "name": "Rohith K"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Likitha N"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Shreyas"
+                }
+            ],
+            "services": [
+                "AI Solutions",
+                "Web Development", 
+                "Digital Marketing",
+                "Software Development",
+                "Machine Learning"
+            ]
+        }
+        </script>
+        
         <!--====== Default css ======-->
         <link rel="stylesheet" href="assets/css/default.css">
         <!--====== Style css ======-->
         <link rel="stylesheet" href="assets/css/style.css">
         <!--====== Responsive css ======-->
         <link rel="stylesheet" href="assets/css/responsive.css">
+        
+        <!-- Initialize dark mode to prevent flash of light content -->
+        <script>
+            (function() {
+                var stored = localStorage.getItem('astriftech-theme');
+                if (stored === null || stored === 'dark') {
+                    document.documentElement.classList.add('theme-dark');
+                    document.body.classList.add('theme-dark');
+                }
+            })();
+        </script>
         
     <!-- Page-level overrides: dark-mode colorful service cards -->
         <style>
@@ -112,6 +206,156 @@
             /* Respect reduced motion */
             @media (prefers-reduced-motion: reduce){
                 body.theme-dark .service-item.service-style-one{ animation: none; }
+            }
+
+            /* Fix hero video positioning and responsiveness */
+            .hero-banner-v1 .hero-img.hero-img-two {
+                bottom: 50px !important; /* Bring it down from 110px */
+                right: 120px !important; /* Adjust right positioning */
+            }
+            .hero-banner-v1 .hero-img.hero-img-two video {
+                transform: scale(0.9) !important; /* Reduce size from 1.15 to 0.9 */
+                max-width: 450px; /* Set maximum width */
+                height: auto;
+            }
+
+            /* Responsive adjustments for video */
+            @media (max-width: 1400px) {
+                .hero-banner-v1 .hero-img.hero-img-two {
+                    bottom: 40px !important;
+                    right: 80px !important;
+                }
+                .hero-banner-v1 .hero-img.hero-img-two video {
+                    transform: scale(0.8) !important;
+                    max-width: 400px;
+                }
+            }
+
+            @media (max-width: 1200px) {
+                .hero-banner-v1 .hero-img.hero-img-two {
+                    bottom: 30px !important;
+                    right: 50px !important;
+                }
+                .hero-banner-v1 .hero-img.hero-img-two video {
+                    transform: scale(0.7) !important;
+                    max-width: 350px;
+                }
+            }
+
+            @media (max-width: 992px) {
+                .hero-banner-v1 .hero-img.hero-img-two {
+                    bottom: 20px !important;
+                    right: 20px !important;
+                }
+                .hero-banner-v1 .hero-img.hero-img-two video {
+                    transform: scale(0.6) !important;
+                    max-width: 300px;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .hero-banner-v1 .hero-img.hero-img-two {
+                    display: none !important; /* Hide on mobile for better performance and layout */
+                }
+            }
+
+            /* Enhanced hover effects for Let's Talk button */
+            .hero-content .main-btn.arrow-btn {
+                position: relative;
+                overflow: hidden;
+                transform: translateY(0);
+                box-shadow: 0 4px 15px rgba(89, 86, 233, 0.3);
+                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+
+            .hero-content .main-btn.arrow-btn:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                transition: left 0.6s;
+            }
+
+            .hero-content .main-btn.arrow-btn:hover {
+                transform: translateY(-3px) scale(1.05);
+                box-shadow: 0 8px 25px rgba(89, 86, 233, 0.4), 0 0 20px rgba(89, 86, 233, 0.2);
+                background: linear-gradient(135deg, var(--blue-dark), #6366f1);
+            }
+
+            .hero-content .main-btn.arrow-btn:hover:before {
+                left: 100%;
+            }
+
+            .hero-content .main-btn.arrow-btn:hover:after {
+                transform: translateX(5px);
+                transition: transform 0.3s ease;
+            }
+
+            .hero-content .main-btn.arrow-btn:after {
+                transition: transform 0.3s ease;
+            }
+
+            .hero-content .main-btn.arrow-btn:active {
+                transform: translateY(-1px) scale(1.02);
+                transition: all 0.1s ease;
+            }
+
+            /* Pulse animation on load */
+            @keyframes pulse-glow {
+                0% { box-shadow: 0 4px 15px rgba(89, 86, 233, 0.3); }
+                50% { box-shadow: 0 4px 20px rgba(89, 86, 233, 0.5); }
+                100% { box-shadow: 0 4px 15px rgba(89, 86, 233, 0.3); }
+            }
+
+            .hero-content .main-btn.arrow-btn.wow {
+                animation: pulse-glow 2s ease-in-out infinite;
+            }
+
+            .hero-content .main-btn.arrow-btn.wow:hover {
+                animation: none;
+            }
+
+            /* Dark mode adjustments */
+            body.theme-dark .hero-content .main-btn.arrow-btn {
+                box-shadow: 0 4px 15px rgba(110, 168, 254, 0.3);
+            }
+
+            body.theme-dark .hero-content .main-btn.arrow-btn:hover {
+                box-shadow: 0 8px 25px rgba(110, 168, 254, 0.4), 0 0 20px rgba(110, 168, 254, 0.2);
+                background: linear-gradient(135deg, #6ea8fe, #4f46e5);
+            }
+
+            @keyframes pulse-glow-dark {
+                0% { box-shadow: 0 4px 15px rgba(110, 168, 254, 0.3); }
+                50% { box-shadow: 0 4px 20px rgba(110, 168, 254, 0.5); }
+                100% { box-shadow: 0 4px 15px rgba(110, 168, 254, 0.3); }
+            }
+
+            body.theme-dark .hero-content .main-btn.arrow-btn.wow {
+                animation: pulse-glow-dark 2s ease-in-out infinite;
+            }
+
+            /* Dark preloader by default */
+            .preloader {
+                background-color: #0f172a !important; /* Dark background by default */
+            }
+            
+            .preloader .pre-shadow {
+                background: rgba(255, 255, 255, 0.1) !important; /* Light shadow for dark mode */
+                opacity: 0.3 !important;
+            }
+            
+            /* Light mode preloader (when user switches to light) */
+            body:not(.theme-dark) .preloader {
+                background-color: #fff !important;
+            }
+            
+            body:not(.theme-dark) .preloader .pre-shadow {
+                background: #000 !important;
+                opacity: 0.1 !important;
             }
 
             /* Inline label CTA for headings (reused for About Us) */
@@ -254,7 +498,7 @@
                                     <li class="menu-item"><a href="index.html" class="active nav-link">Home</a></li>
                                     <li class="menu-item"><a href="service-details.html" class="nav-link">Services</a></li>
                                     <li class="menu-item"><a href="team.html" class="nav-link">About Us</a></li>
-                                    <li class="menu-item"><a href="blogs.html" class="nav-link">Blogs</a></li>
+                                    <li class="menu-item"><a href="coming-soon.html" class="nav-link">Blogs</a></li>
                                     <li class="menu-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
                                 </ul>
                             </nav>
@@ -263,7 +507,7 @@
                             <ul>
                                 <li>
                                     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
-                                        <i class="fas fa-moon"></i>
+                                        <i class="fas fa-sun"></i>
                                     </button>
                                 </li>
                                 <li class="navbar-toggle-btn">
@@ -929,10 +1173,10 @@ AstrifTech LLP was founded by four passionate innovators with a mission to make 
                         <div class="blog-post-item mb-40 wow fadeInUp" data-wow-delay=".25s">
                             <div class="entry-content">
                                 <a href="#" class="cat-btn">Design</a>
-                                <h3 class="title"><a href="blog-details.html">Everything You Want To Know About</a></h3>
+                                <h3 class="title"><a href="coming-soon.html">Everything You Want To Know About</a></h3>
                                 <p>Sit amet consectete adipising elit 
                                     wedo eiusmod temeidiunt laboret dolore magna ways</p>
-                                <a href="blog-details.html" class="btn-link">Read More</a>
+                                <a href="coming-soon.html" class="btn-link">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -940,10 +1184,10 @@ AstrifTech LLP was founded by four passionate innovators with a mission to make 
                         <div class="blog-post-item mb-40 wow fadeInUp" data-wow-delay=".30s">
                             <div class="entry-content">
                                 <a href="#" class="cat-btn">Design</a>
-                                <h3 class="title"><a href="blog-details.html">Designing Better Links For Websites And Emails</a></h3>
+                                <h3 class="title"><a href="coming-soon.html">Designing Better Links For Websites And Emails</a></h3>
                                 <p>Sit amet consectete adipising elit 
                                     wedo eiusmod temeidiunt laboret dolore magna ways</p>
-                                <a href="blog-details.html" class="btn-link">Read More</a>
+                                <a href="coming-soon.html" class="btn-link">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -951,10 +1195,10 @@ AstrifTech LLP was founded by four passionate innovators with a mission to make 
                         <div class="blog-post-item mb-40 wow fadeInUp" data-wow-delay=".35s">
                             <div class="entry-content">
                                 <a href="#" class="cat-btn">Design</a>
-                                <h3 class="title"><a href="blog-details.html">Everything You Want To Know About</a></h3>
+                                <h3 class="title"><a href="coming-soon.html">Everything You Want To Know About</a></h3>
                                 <p>Sit amet consectete adipising elit 
                                     wedo eiusmod temeidiunt laboret dolore magna ways</p>
-                                <a href="blog-details.html" class="btn-link">Read More</a>
+                                <a href="coming-soon.html" class="btn-link">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -962,7 +1206,7 @@ AstrifTech LLP was founded by four passionate innovators with a mission to make 
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="button-box text-center wow fadeInUp">
-                            <a href="blogs.html" class="main-btn arrow-btn">View More News</a>
+                            <a href="coming-soon.html" class="main-btn arrow-btn">View More News</a>
                         </div>
                     </div>
                 </div>
