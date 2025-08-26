@@ -82,7 +82,8 @@
 
             /* Coming Soon Page Styles */
             .coming-soon-section {
-                min-height: 100vh;
+                /* Compensate for global body zoom: 0.8 so this section still fills the screen */
+                min-height: calc(100vh / 0.8);
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -245,6 +246,10 @@
 
             /* Responsive design */
             @media (max-width: 768px) {
+                .coming-soon-section {
+                    /* Use dynamic viewport on mobile where available */
+                    min-height: calc(100dvh / 0.8);
+                }
                 .coming-soon-title {
                     font-size: 36px;
                 }
