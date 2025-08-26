@@ -2,14 +2,21 @@
   var body = document.body;
   var toggle = document.getElementById('themeToggle');
   var stored = localStorage.getItem('astriftech-theme');
-  if (stored === 'dark') {
+  
+  // Set dark mode as default: if no preference stored OR explicitly set to dark
+  if (stored === null || stored === 'dark') {
     body.classList.add('theme-dark');
+    // If no preference stored, set dark as the initial preference
+    if (stored === null) {
+      localStorage.setItem('astriftech-theme', 'dark');
+    }
   }
+  
   function updateIcon(){
     if(!toggle) return;
-    // Show a neutral Adjust icon in dark mode, and a Moon in light mode
+    // Show a Sun icon in dark mode (to switch to light), and a Moon in light mode (to switch to dark)
     var html = body.classList.contains('theme-dark')
-      ? '<i class="fas fa-adjust"></i>'
+      ? '<i class="fas fa-sun"></i>'
       : '<i class="fas fa-moon"></i>';
     toggle.innerHTML = html;
   }

@@ -4,10 +4,24 @@
         <!--====== Required meta tags ======-->
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="">
+        <meta name="description" content="Meet the innovative team behind AstrifTech LLP. Our passionate founders and experts are dedicated to delivering cutting-edge AI solutions and digital services.">
+        <meta name="keywords" content="AstrifTech team, founders, AI experts, web developers, digital marketing team, technology innovators">
+        <meta name="author" content="AstrifTech LLP">
+        <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!--====== Title ======-->
-    <title>Astriftech LLP</title>
+        
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="Our Team - Meet the Innovators | AstrifTech LLP">
+        <meta property="og:description" content="Meet the passionate team behind AstrifTech LLP, delivering innovative AI solutions and digital services.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://astriftech.com/team.html">
+        <meta property="og:image" content="https://astriftech.com/assets/images/logo/Astriftech-LOGO1.png">
+        
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://astriftech.com/team.html">
+        
+        <!--====== Title ======-->
+        <title>Our Team - Meet the Innovators Behind AstrifTech LLP</title>
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="assets/images/Astriftech Logo_small.png" type="image/png">
         <!--====== Default css ======-->
@@ -16,6 +30,36 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <!--====== Responsive css ======-->
         <link rel="stylesheet" href="assets/css/responsive.css">
+        
+        <!-- Initialize dark mode to prevent flash of light content -->
+        <script>
+            (function() {
+                var stored = localStorage.getItem('astriftech-theme');
+                if (stored === null || stored === 'dark') {
+                    document.documentElement.classList.add('theme-dark');
+                    document.body.classList.add('theme-dark');
+                }
+            })();
+        </script>
+        
+        <style>
+            /* Dark preloader by default */
+            .preloader {
+                background-color: #0f172a !important;
+            }
+            .preloader .pre-shadow {
+                background: rgba(255, 255, 255, 0.1) !important;
+                opacity: 0.3 !important;
+            }
+            /* Light mode preloader */
+            body:not(.theme-dark) .preloader {
+                background-color: #fff !important;
+            }
+            body:not(.theme-dark) .preloader .pre-shadow {
+                background: #000 !important;
+                opacity: 0.1 !important;
+            }
+        </style>
         
     <!-- Page-level: Animated Meet Our Team oval CTA -->
         <style>
@@ -217,7 +261,7 @@
                                     <li class="menu-item"><a href="index.html" class="nav-link">Home</a></li>
                                     <li class="menu-item"><a href="service-details.html" class="nav-link">Services</a></li>
                                     <li class="menu-item"><a href="team.html" class="active nav-link">About Us</a></li>
-                                    <li class="menu-item"><a href="blogs.html" class="nav-link">Blogs</a></li>
+                                    <li class="menu-item"><a href="coming-soon.html" class="nav-link">Blogs</a></li>
                                     <li class="menu-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
                                 </ul>
                             </nav>
@@ -226,7 +270,7 @@
                             <ul>
                                 <li>
                                     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
-                                        <i class="fas fa-moon"></i>
+                                        <i class="fas fa-sun"></i>
                                     </button>
                                 </li>
                                 <li class="navbar-toggle-btn">

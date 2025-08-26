@@ -4,10 +4,24 @@
         <!--====== Required meta tags ======-->
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="">
+        <meta name="description" content="Our comprehensive services include AI solutions, web development, and digital marketing. Discover how AstrifTech LLP can transform your business with cutting-edge technology.">
+        <meta name="keywords" content="AI development, web development services, digital marketing, custom software, machine learning, Bengaluru tech services">
+        <meta name="author" content="AstrifTech LLP">
+        <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="Our Services - AstrifTech LLP">
+        <meta property="og:description" content="Comprehensive AI solutions, web development, and digital marketing services to transform your business.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://astriftech.com/service-details.html">
+        <meta property="og:image" content="https://astriftech.com/assets/images/logo/Astriftech-LOGO1.png">
+        
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://astriftech.com/service-details.html">
+        
         <!--====== Title ======-->
-    <title>Astriftech LLP</title>
+        <title>Our Services - AI Solutions, Web Development & Digital Marketing | AstrifTech LLP</title>
         <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="assets/images/Astriftech Logo_small.png" type="image/png">
         <!--====== Default css ======-->
@@ -16,6 +30,36 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <!--====== Responsive css ======-->
         <link rel="stylesheet" href="assets/css/responsive.css">
+        
+        <!-- Initialize dark mode to prevent flash of light content -->
+        <script>
+            (function() {
+                var stored = localStorage.getItem('astriftech-theme');
+                if (stored === null || stored === 'dark') {
+                    document.documentElement.classList.add('theme-dark');
+                    document.body.classList.add('theme-dark');
+                }
+            })();
+        </script>
+        
+        <style>
+            /* Dark preloader by default */
+            .preloader {
+                background-color: #0f172a !important;
+            }
+            .preloader .pre-shadow {
+                background: rgba(255, 255, 255, 0.1) !important;
+                opacity: 0.3 !important;
+            }
+            /* Light mode preloader */
+            body:not(.theme-dark) .preloader {
+                background-color: #fff !important;
+            }
+            body:not(.theme-dark) .preloader .pre-shadow {
+                background: #000 !important;
+                opacity: 0.1 !important;
+            }
+        </style>
         
         <!--====== Custom Service Page Styles ======-->
         <style>
@@ -415,7 +459,7 @@
                                     <li class="menu-item"><a href="index.html" class="nav-link">Home</a></li>
                                     <li class="menu-item"><a href="service-details.html" class="active nav-link">Services</a></li>
                                     <li class="menu-item"><a href="team.html" class="nav-link">About Us</a></li>
-                                    <li class="menu-item"><a href="blogs.html" class="nav-link">Blogs</a></li>
+                                    <li class="menu-item"><a href="coming-soon.html" class="nav-link">Blogs</a></li>
                                     <li class="menu-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
                                 </ul>
                             </nav>
@@ -424,7 +468,7 @@
                             <ul>
                                 <li>
                                     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
-                                        <i class="fas fa-moon"></i>
+                                        <i class="fas fa-sun"></i>
                                     </button>
                                 </li>
                                 <li class="navbar-toggle-btn">
@@ -451,6 +495,8 @@
                         </svg>
                         <span>Our Services</span>
                     </div>
+                    <br>
+                    <br>
                     <p class="intro-subtext wow fadeInUp" data-wow-delay=".18s">
                         We craft reliable, scalable solutions across web, automation, and growth. Pick what you need—
                         we’ll tailor it for your business goals.

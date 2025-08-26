@@ -16,6 +16,36 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <!--====== Responsive css ======-->
         <link rel="stylesheet" href="assets/css/responsive.css">
+        
+        <!-- Initialize dark mode to prevent flash of light content -->
+        <script>
+            (function() {
+                var stored = localStorage.getItem('astriftech-theme');
+                if (stored === null || stored === 'dark') {
+                    document.documentElement.classList.add('theme-dark');
+                    document.body.classList.add('theme-dark');
+                }
+            })();
+        </script>
+        
+        <style>
+            /* Dark preloader by default */
+            .preloader {
+                background-color: #0f172a !important;
+            }
+            .preloader .pre-shadow {
+                background: rgba(255, 255, 255, 0.1) !important;
+                opacity: 0.3 !important;
+            }
+            /* Light mode preloader */
+            body:not(.theme-dark) .preloader {
+                background-color: #fff !important;
+            }
+            body:not(.theme-dark) .preloader .pre-shadow {
+                background: #000 !important;
+                opacity: 0.1 !important;
+            }
+        </style>
     </head>
     <body>
         <!--====== Start Preloader ======-->
@@ -88,7 +118,7 @@
                                     <li class="menu-item"><a href="index.html" class="nav-link">Home</a></li>
                                     <li class="menu-item"><a href="service-details.html" class="nav-link">Services</a></li>
                                     <li class="menu-item"><a href="team.html" class="nav-link">About Us</a></li>
-                                    <li class="menu-item"><a href="blogs.html" class="nav-link">Blogs</a></li>
+                                    <li class="menu-item"><a href="coming-soon.html" class="nav-link">Blogs</a></li>
                                     <li class="menu-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
                                 </ul>
                             </nav>
@@ -97,7 +127,7 @@
                             <ul>
                                 <li>
                                     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
-                                        <i class="fas fa-moon"></i>
+                                        <i class="fas fa-sun"></i>
                                     </button>
                                 </li>
                                 <li class="navbar-toggle-btn">
