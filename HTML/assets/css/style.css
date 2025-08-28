@@ -1061,6 +1061,17 @@ button {
     visibility: visible;
     opacity: 1;
 }
+
+/* Enhanced overlay for dark mode */
+body.theme-dark .header-navigation .nav-overlay {
+    background-color: rgba(0, 0, 0, 0.75) !important;
+    backdrop-filter: blur(4px) !important;
+}
+
+body.theme-dark .header-navigation .nav-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
 .breakpoint-on .nav-ml-mr-auto{
     margin-left: 0px;
 }
@@ -1206,50 +1217,330 @@ button {
 .header-navigation.breakpoint-on .nav-menu {
     text-align: left;
     background-color: #fff; /* default light */
-    position: fixed;
-    top: 0;
-    left: -300px;
-    z-index: 9999;
-    width: 300px;
-    height: 100%;
-    -webkit-transition-duration: 500ms;
-            -o-transition-duration: 500ms;
-       transition-duration: 500ms;
-    padding: 0;
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -300px !important;
+    z-index: 9999 !important;
+    width: 300px !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    max-height: none !important;
+    -webkit-transition: left 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+            -o-transition: left 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+       transition: left 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    padding: 0 !important;
     -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    display: block;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    padding-top: 70px;
+    display: block !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    padding-top: 70px !important;
+    transform: none !important;
+    -webkit-overflow-scrolling: touch !important;
 }
-/* Dark theme for mobile nav drawer */
+
+/* Dark theme for mobile nav drawer - Enhanced styling to match light mode quality */
 body.theme-dark .header-navigation.breakpoint-on .nav-menu {
-    background-color: #0b1224;
-    box-shadow: 0 10px 30px rgba(2,6,23,0.6);
-    /* Match light-mode side drawer behavior */
-    width: 300px;
-    left: -300px;
-    z-index: 10001; /* above .nav-overlay */
+    background-color: #0f172a !important; /* Darker, more consistent with theme */
+    background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%) !important; /* Subtle gradient */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(148,163,184,0.1) !important; /* Enhanced shadow with border */
+    backdrop-filter: saturate(140%) blur(10px) !important; /* Match header blur effect */
+    border-right: 1px solid rgba(148,163,184,0.1) !important; /* Subtle border */
+    /* Ensure side drawer behavior on all mobile devices */
+    width: 300px !important;
+    left: -300px !important;
+    z-index: 10001 !important; /* above .nav-overlay */
+    position: fixed !important;
+    top: 0 !important;
+    height: 100% !important;
+    transform: none !important; /* Prevent any transforms */
+    transition: left 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important; /* Smoother transition */
+    overflow-y: auto !important;
+    padding-top: 70px !important;
 }
+
 body.theme-dark .header-navigation.breakpoint-on .nav-menu.menu-on {
-    left: 0;
+    left: 0 !important;
+    transform: none !important;
 }
+
+/* Enhanced mobile nav items styling for dark mode */
 body.theme-dark .header-navigation.breakpoint-on .nav-menu .main-menu ul li {
-    border-bottom-color: rgba(148,163,184,0.15);
+    border-bottom: 1px solid rgba(148,163,184,0.08) !important;
+    transition: background-color 0.2s ease !important;
 }
+
+body.theme-dark .header-navigation.breakpoint-on .nav-menu .main-menu ul li:hover {
+    background-color: rgba(148,163,184,0.05) !important;
+}
+
 body.theme-dark .header-navigation.breakpoint-on .nav-menu .main-menu ul li a {
-    color: #e2e8f0 !important; /* Force visibility */
-    border-bottom-color: rgba(148,163,184,0.12);
+    color: #e2e8f0 !important; /* Light text for readability */
+    font-weight: 500 !important;
+    padding: 16px 24px !important; /* Better spacing */
+    transition: all 0.2s ease !important;
+    position: relative !important;
+    border-bottom: none !important; /* Remove duplicate border */
 }
-body.theme-dark .header-navigation.breakpoint-on .nav-menu .main-menu ul li a:hover {
-    color: #60a5fa !important; /* Hover state */
+
+body.theme-dark .header-navigation.breakpoint-on .nav-menu .main-menu ul li a:hover,
+body.theme-dark .header-navigation.breakpoint-on .nav-menu .main-menu ul li a.active {
+    color: #60a5fa !important; /* Brand blue for hover/active */
+    transform: translateX(4px) !important; /* Subtle slide effect */
 }
+
+body.theme-dark .header-navigation.breakpoint-on .nav-menu .main-menu ul li a.active::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    height: 100% !important;
+    width: 3px !important;
+    background: linear-gradient(135deg, #60a5fa, #3b82f6) !important;
+    border-radius: 0 2px 2px 0 !important;
+}
+
+/* Sub-menu styling for dark mode */
 body.theme-dark .header-navigation.breakpoint-on .nav-menu .main-menu ul li .sub-menu li a {
     color: #cbd5e1 !important;
+    padding-left: 40px !important; /* Indent sub-items */
+    font-size: 14px !important;
+}
+
+/* Mobile viewport and scrolling fixes */
+@media (max-width: 1199px) {
+    html, body {
+        overflow-x: hidden !important;
+    }
+    
+    /* Ensure proper viewport height calculation on mobile */
+    .header-navigation.breakpoint-on .nav-menu {
+        height: 100vh !important;
+        height: calc(var(--vh, 1vh) * 100) !important;
+    }
+    
+    body.theme-dark .header-navigation.breakpoint-on .nav-menu {
+        height: 100vh !important;
+        height: calc(var(--vh, 1vh) * 100) !important;
+    }
+}
+
+/* ULTIMATE MOBILE NAV FIX - Override everything that might interfere */
+@media (max-width: 1199px) {
+    /* Force all parent containers to not interfere */
+    .header-navigation.breakpoint-on,
+    .header-navigation.breakpoint-on .container-fluid,
+    .header-navigation.breakpoint-on .primary-menu {
+        position: static !important;
+        overflow: visible !important;
+        height: auto !important;
+        max-height: none !important;
+    }
+    
+    /* Force navigation to be full-screen sidebar */
+    .header-navigation.breakpoint-on .nav-menu {
+        position: fixed !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        left: -300px !important;
+        right: auto !important;
+        width: 300px !important;
+        height: 100vh !important;
+        height: calc(var(--vh, 1vh) * 100) !important;
+        height: -webkit-fill-available !important;
+        min-height: 100vh !important;
+        min-height: calc(var(--vh, 1vh) * 100) !important;
+        min-height: -webkit-fill-available !important;
+        max-height: 100vh !important;
+        max-height: calc(var(--vh, 1vh) * 100) !important;
+        max-height: -webkit-fill-available !important;
+        z-index: 999999 !important;
+        transform: translateX(0) !important;
+        transition: left 500ms ease !important;
+        display: block !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        background-color: #fff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        padding-top: 70px !important;
+        box-sizing: border-box !important;
+    }
+    
+    .header-navigation.breakpoint-on .nav-menu.menu-on {
+        left: 0 !important;
+        transform: translateX(0) !important;
+    }
+    
+    /* Dark mode navigation - full screen */
+    body.theme-dark .header-navigation.breakpoint-on .nav-menu {
+        background-color: #0f172a !important;
+        background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%) !important;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(148,163,184,0.1) !important;
+        backdrop-filter: saturate(140%) blur(10px) !important;
+        border-right: 1px solid rgba(148,163,184,0.1) !important;
+        position: fixed !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        left: -300px !important;
+        right: auto !important;
+        width: 300px !important;
+        height: 100vh !important;
+        height: calc(var(--vh, 1vh) * 100) !important;
+        height: -webkit-fill-available !important;
+        min-height: 100vh !important;
+        min-height: calc(var(--vh, 1vh) * 100) !important;
+        min-height: -webkit-fill-available !important;
+        max-height: 100vh !important;
+        max-height: calc(var(--vh, 1vh) * 100) !important;
+        max-height: -webkit-fill-available !important;
+        z-index: 999999 !important;
+        transform: translateX(0) !important;
+        transition: left 500ms ease !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        padding-top: 70px !important;
+        box-sizing: border-box !important;
+    }
+    
+    body.theme-dark .header-navigation.breakpoint-on .nav-menu.menu-on {
+        left: 0 !important;
+        transform: translateX(0) !important;
+    }
+    
+    /* Ensure navigation content doesn't cause issues */
+    .header-navigation.breakpoint-on .nav-menu .main-menu {
+        width: 100% !important;
+        height: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .header-navigation.breakpoint-on .nav-menu .main-menu ul {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
+    }
+}
+
+/* CRITICAL: Force mobile navigation as full-height sidebar - highest priority */
+.header-navigation.navigation-style-v1.breakpoint-on .nav-menu,
+.header-navigation.breakpoint-on .nav-menu {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -300px !important;
+    width: 300px !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    max-height: none !important;
+    z-index: 10000 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    transition: left 500ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+.header-navigation.navigation-style-v1.breakpoint-on .nav-menu.menu-on,
+.header-navigation.breakpoint-on .nav-menu.menu-on {
+    left: 0 !important;
+    transform: translateX(0) !important;
+}
+
+/* Force dark mode navigation to follow same pattern */
+body.theme-dark .header-navigation.navigation-style-v1.breakpoint-on .nav-menu,
+body.theme-dark .header-navigation.breakpoint-on .nav-menu {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -300px !important;
+    width: 300px !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    max-height: none !important;
+    z-index: 10001 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    transition: left 500ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+body.theme-dark .header-navigation.navigation-style-v1.breakpoint-on .nav-menu.menu-on,
+body.theme-dark .header-navigation.breakpoint-on .nav-menu.menu-on {
+    left: 0 !important;
+    transform: translateX(0) !important;
+}
+
+/* Critical mobile navigation fixes - Force sidebar behavior */
+@media (max-width: 1199px) {
+    .header-navigation.breakpoint-on .nav-menu {
+        position: fixed !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        left: -300px !important;
+        width: 300px !important;
+        height: 100vh !important;
+        min-height: 100vh !important;
+        max-height: none !important;
+        z-index: 10000 !important;
+        transform: translateX(0) !important;
+        transition: left 500ms ease !important;
+        display: block !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+    
+    .header-navigation.breakpoint-on .nav-menu.menu-on {
+        left: 0 !important;
+        transform: translateX(0) !important;
+    }
+    
+    /* Ensure dark mode nav also follows sidebar pattern */
+    body.theme-dark .header-navigation.breakpoint-on .nav-menu {
+        position: fixed !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        left: -300px !important;
+        width: 300px !important;
+        height: 100vh !important;
+        min-height: 100vh !important;
+        max-height: none !important;
+        z-index: 10001 !important;
+        transform: translateX(0) !important;
+        transition: left 500ms ease !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+    
+    body.theme-dark .header-navigation.breakpoint-on .nav-menu.menu-on {
+        left: 0 !important;
+        transform: translateX(0) !important;
+    }
+}
+
+body.theme-dark .header-navigation.breakpoint-on .nav-menu .main-menu ul li .sub-menu li a:hover {
+    color: #60a5fa !important;
+    background-color: rgba(96,165,250,0.1) !important;
 }
 .header-navigation.breakpoint-on .nav-menu.menu-on {
-    left: 0;
+    left: 0 !important;
+    transform: none !important;
 }
 .header-navigation.breakpoint-on .nav-menu .main-menu ul li {
     display: block;
@@ -1350,9 +1641,23 @@ body.theme-dark .header-navigation.breakpoint-on .nav-menu .main-menu ul li .sub
     cursor: pointer;
     display: block;
 }
-/* Dark theme: make hamburger bars visible */
+/* Enhanced hamburger menu styling for dark mode */
+body.theme-dark .header-navigation .navbar-toggler {
+    padding: 8px !important;
+    border-radius: 8px !important;
+    background: rgba(148,163,184,0.1) !important;
+    border: 1px solid rgba(148,163,184,0.2) !important;
+    transition: all 0.2s ease !important;
+}
+
+body.theme-dark .header-navigation .navbar-toggler:hover {
+    background: rgba(148,163,184,0.15) !important;
+    transform: scale(1.05) !important;
+}
+
 body.theme-dark .header-navigation .navbar-toggler span {
-    background-color: #e2e8f0;
+    background-color: #e2e8f0 !important;
+    transition: all 0.3s ease !important;
 }
 .header-navigation .navbar-toggler.active span:nth-of-type(1) {
     -webkit-transform: rotate3d(0, 0, 1, 45deg);
@@ -1384,9 +1689,32 @@ body.theme-dark .header-navigation .navbar-toggler span {
     color: #fff;
     font-size: 20px;
 }
-/* Dark theme: ensure contrast of close icon on dark drawer bg */
-body.theme-dark .header-navigation .navbar-close { background: #111827; }
-body.theme-dark .header-navigation .navbar-close i { color: #e2e8f0; }
+/* Enhanced close button styling for dark mode mobile nav */
+body.theme-dark .header-navigation .navbar-close { 
+    background: linear-gradient(135deg, #374151, #1f2937) !important;
+    border: 1px solid rgba(148,163,184,0.2) !important;
+    border-radius: 8px !important;
+    margin: 15px !important;
+    width: 44px !important;
+    height: 44px !important;
+    line-height: 42px !important;
+    transition: all 0.2s ease !important;
+}
+
+body.theme-dark .header-navigation .navbar-close:hover {
+    background: linear-gradient(135deg, #4b5563, #374151) !important;
+    transform: scale(1.05) !important;
+}
+
+body.theme-dark .header-navigation .navbar-close i { 
+    color: #e2e8f0 !important;
+    font-size: 18px !important;
+    transition: color 0.2s ease !important;
+}
+
+body.theme-dark .header-navigation .navbar-close:hover i {
+    color: #60a5fa !important;
+}
 .navigation-white .navbar-toggler span{
     background-color: #fff;
 }

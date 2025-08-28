@@ -26,6 +26,20 @@
 (function($) {
     'use strict';
 
+    //===== Mobile Viewport Height Fix
+    function setMobileVH() {
+        // Calculate the actual viewport height for mobile devices
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    
+    // Set on load and resize
+    setMobileVH();
+    window.addEventListener('resize', setMobileVH);
+    window.addEventListener('orientationchange', function() {
+        setTimeout(setMobileVH, 100);
+    });
+
     //===== Main Menu
     function mainMenu() {
         // Variables

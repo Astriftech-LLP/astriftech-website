@@ -344,6 +344,63 @@
     }
 }
 
+/* Extra small mobile devices (phones in portrait mode) */
+@media (max-width: 480px) {
+    .hero-banner-v1 {
+        padding: 80px 0 40px; /* Reduced from 100px 0 60px */
+        min-height: 100vh;
+    }
+    
+    .hero-banner-v1 .hero-content h1 {
+        font-size: 32px !important; /* Increased from 28px */
+        line-height: 36px !important; /* Increased from 32px */
+        margin-bottom: 10px !important; /* Reduced from 12px */
+    }
+    
+    .hero-banner-v1 .hero-content .blue-dark {
+        font-size: 28px !important; /* Increased from 24px */
+        line-height: 32px !important; /* Increased from 28px */
+        margin-top: 2px !important; /* Reduced spacing */
+    }
+    
+    .hero-banner-v1 .main-btn {
+        padding: 14px 28px !important;
+        font-size: 15px !important;
+        margin-top: 18px !important; /* Reduced from 25px */
+    }
+    
+    .hero-banner-v1 .hero-img.hero-img-two {
+        max-width: 240px;
+        right: -70px;
+        opacity: 0.7;
+    }
+    
+    /* Improve header spacing on very small screens */
+    .hero-banner-v1 .hero-content {
+        padding: 0 20px;
+    }
+    
+    /* Add subtle animation on mobile */
+    .hero-banner-v1 .hero-content h1 {
+        animation: fadeInUp 0.8s ease-out;
+    }
+    
+    .hero-banner-v1 .main-btn {
+        animation: fadeInUp 0.8s ease-out 0.3s both;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .hero-banner-v1 .hero-content h1 {
         font-size: 72px;
@@ -367,17 +424,133 @@
 
 
 @media (max-width: 767px){
+    /* Enhanced Hero Section for Mobile */
+    .hero-banner-v1 {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 60px 0 20px; /* Reduced from 80px 0 40px */
+        overflow: hidden;
+    }
+    
+    .hero-banner-v1 .container {
+        z-index: 2;
+        position: relative;
+    }
+    
+    .hero-banner-v1 .hero-content {
+        text-align: center;
+        padding: 0 15px;
+        margin-bottom: 0;
+    }
+    
+    .hero-banner-v1 .hero-content h1 {
+        font-size: 36px !important; /* Increased from 32px */
+        line-height: 40px !important; /* Increased from 38px */
+        margin-bottom: 12px !important; /* Reduced from 15px */
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    .hero-banner-v1 .hero-content h1 br {
+        display: none; /* Remove line break on mobile for better flow */
+    }
+    
+    .hero-banner-v1 .hero-content .blue-dark {
+        display: block;
+        margin-top: 3px; /* Reduced from 5px */
+        font-size: 32px; /* Increased from 28px */
+        line-height: 36px; /* Increased from 34px */
+        background: linear-gradient(135deg, #60a5fa, #3b82f6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    /* Enhanced video positioning for mobile */
+    .hero-banner-v1 .hero-img.hero-img-two {
+        position: absolute;
+        top: 50%;
+        right: -50px;
+        transform: translateY(-50%);
+        z-index: 1;
+        max-width: 280px;
+        opacity: 0.8;
+        margin: 0;
+    }
+    
+    .hero-banner-v1 .hero-img.hero-img-two video {
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        filter: drop-shadow(0 10px 20px rgba(89, 86, 233, 0.2));
+    }
+    
+    /* Enhanced button styling for mobile */
+    .hero-banner-v1 .main-btn {
+        padding: 16px 32px !important;
+        font-size: 16px !important;
+        font-weight: 600 !important;
+        border-radius: 12px !important;
+        background: linear-gradient(135deg, #5956e9, #4f46e5) !important;
+        border: none !important;
+        box-shadow: 0 8px 24px rgba(89, 86, 233, 0.3) !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        margin-top: 20px !important; /* Reduced from 30px */
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+    
+    .hero-banner-v1 .main-btn:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 12px 32px rgba(89, 86, 233, 0.4) !important;
+    }
+    
+    /* Background gradients for mobile */
+    .hero-banner-v1 .bg-one,
+    .hero-banner-v1 .bg-two {
+        opacity: 0.6;
+    }
+    
+    .hero-banner-v1::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 30% 20%, rgba(89, 86, 233, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 70% 80%, rgba(96, 165, 250, 0.1) 0%, transparent 50%);
+        z-index: 1;
+        pointer-events: none;
+    }
+    
+    /* Dark mode enhancements */
+    body.theme-dark .hero-banner-v1 .hero-content .blue-dark {
+        background: linear-gradient(135deg, #60a5fa, #38bdf8);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    body.theme-dark .hero-banner-v1 .hero-img.hero-img-two video {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        filter: drop-shadow(0 10px 20px rgba(96, 165, 250, 0.2));
+    }
+    
+    body.theme-dark .hero-banner-v1::before {
+        background: radial-gradient(circle at 30% 20%, rgba(96, 165, 250, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 70% 80%, rgba(89, 86, 233, 0.15) 0%, transparent 50%);
+    }
+
     .section-title h2{
         font-size: 30px;
         line-height: 40px;
     }
     .hero-banner-v1 .hero-content p {
         padding-right: 0%;
-    }
-    .hero-banner-v2 .hero-content h1,
-    .hero-banner-v1 .hero-content h1 {
-        font-size: 40px;
-        line-height: 50px;
     }
     .service-item {
         padding: 50px 35px 40px;
@@ -386,6 +559,7 @@
         font-size: 26px;
         line-height: 38px;
     }
+    /* Mobile navigation is handled in main style.css */
     .footer-top .text-wrapper {
         padding-left: 0px;
         padding-top: 20px;
