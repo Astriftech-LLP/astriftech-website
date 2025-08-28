@@ -51,6 +51,25 @@
         display: block;
     }
     .header-navigation .main-menu ul > li.has-children > a:before{
+    /* Final mobile override: keep hero video absolute and inset from the right */
+    @media (max-width: 767px) {
+        .hero-banner-v1 .hero-img.hero-img-two {
+            position: absolute !important;
+            top: 50% !important;
+            right: max(24px, env(safe-area-inset-right)) !important;
+            left: auto !important;
+            transform: translateY(-50%) !important;
+            width: auto !important;
+            max-width: 280px !important;
+            margin: 0 !important;
+            z-index: 1;
+        }
+        .hero-banner-v1 .hero-img.hero-img-two video {
+            width: 100% !important;
+            height: auto !important;
+            border-radius: 16px;
+        }
+    }
         display: none;
     }
     .navigation-style-v3 .container-fluid,
@@ -426,10 +445,13 @@
 @media (max-width: 767px){
     /* Enhanced Hero Section for Mobile */
     .hero-banner-v1 {
-        min-height: 100vh;
+        --video-w: clamp(160px, 38vw, 240px); /* scale video width with viewport */
+        min-height: 70vh; /* slightly shorter */
         display: flex;
         align-items: center;
-        padding: 60px 0 20px; /* Reduced from 80px 0 40px */
+        /* Add space for transparent header + iPhone notch */
+        padding: 96px 0 12px; /* fallback */
+        padding-top: calc(96px + env(safe-area-inset-top));
         overflow: hidden;
     }
     
@@ -439,17 +461,23 @@
     }
     
     .hero-banner-v1 .hero-content {
-        text-align: center;
+        text-align: left;
         padding: 0 15px;
         margin-bottom: 0;
+        max-width: calc(100% - var(--video-w) - 32px); /* keep clear of the video */
+        margin-left: 16px;
+        margin-right: auto;
     }
     
     .hero-banner-v1 .hero-content h1 {
-        font-size: 36px !important; /* Increased from 32px */
-        line-height: 40px !important; /* Increased from 38px */
-        margin-bottom: 12px !important; /* Reduced from 15px */
+        font-size: 32px !important;
+        line-height: 36px !important;
+        margin-bottom: 8px !important;
         font-weight: 700;
         letter-spacing: -0.5px;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    hyphens: auto;
     }
     
     .hero-banner-v1 .hero-content h1 br {
@@ -458,25 +486,30 @@
     
     .hero-banner-v1 .hero-content .blue-dark {
         display: block;
-        margin-top: 3px; /* Reduced from 5px */
-        font-size: 32px; /* Increased from 28px */
-        line-height: 36px; /* Increased from 34px */
+        margin-top: 2px;
+        font-size: 28px;
+        line-height: 32px;
         background: linear-gradient(135deg, #60a5fa, #3b82f6);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    hyphens: auto;
     }
     
-    /* Enhanced video positioning for mobile */
+    /* Video absolute on the right; inset to avoid edge */
     .hero-banner-v1 .hero-img.hero-img-two {
-        position: absolute;
-        top: 50%;
-        right: -50px;
-        transform: translateY(-50%);
-        z-index: 1;
-        max-width: 280px;
-        opacity: 0.8;
-        margin: 0;
+        position: absolute !important;
+        top: 50% !important;
+        right: max(24px, env(safe-area-inset-right)) !important;
+        left: auto !important;
+        bottom: auto !important;
+        transform: translateY(-50%) !important;
+        z-index: 0 !important; /* on same layer, but content leaves space */
+        max-width: var(--video-w) !important;
+        opacity: 0.9;
+        margin: 0 !important;
     }
     
     .hero-banner-v1 .hero-img.hero-img-two video {
@@ -486,18 +519,29 @@
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         filter: drop-shadow(0 10px 20px rgba(89, 86, 233, 0.2));
     }
+
+    /* Extra small phones: stack video below text to avoid clipping */
+    @media (max-width: 360px) {
+        .hero-banner-v1 { --video-w: 0px; min-height: auto; padding: 24px 0 6px; }
+        .hero-banner-v1 .hero-content { max-width: 100%; margin: 0 16px; text-align: center; }
+        .hero-banner-v1 .hero-content h1 { font-size: 28px !important; line-height: 32px !important; }
+        .hero-banner-v1 .hero-content .blue-dark { font-size: 24px !important; line-height: 28px !important; }
+        .hero-banner-v1 .main-btn { margin-left: auto !important; margin-right: auto !important; }
+        .hero-banner-v1 .hero-img.hero-img-two { position: relative !important; top: auto !important; right: auto !important; left: auto !important; bottom: auto !important; transform: none !important; max-width: 85vw !important; margin: 12px auto 0 !important; z-index: 0 !important; }
+        .hero-banner-v1 .hero-img.hero-img-two video { max-width: 100% !important; }
+    }
     
     /* Enhanced button styling for mobile */
     .hero-banner-v1 .main-btn {
-        padding: 16px 32px !important;
-        font-size: 16px !important;
+        padding: 14px 26px !important;
+        font-size: 15px !important;
         font-weight: 600 !important;
         border-radius: 12px !important;
         background: linear-gradient(135deg, #5956e9, #4f46e5) !important;
         border: none !important;
         box-shadow: 0 8px 24px rgba(89, 86, 233, 0.3) !important;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        margin-top: 20px !important; /* Reduced from 30px */
+        margin-top: 14px !important;
         display: inline-flex !important;
         align-items: center !important;
         gap: 8px !important;

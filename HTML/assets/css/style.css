@@ -331,23 +331,13 @@ body.theme-dark .main-menu ul li a:hover{
     color: var(--accent-2);
 }
 
-/* Toggle button */
+/* Theme toggle removed - dark mode only */
 .theme-toggle{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--heading);
-    cursor: pointer;
-    transition: all .25s ease;
+    display: none !important; /* Hidden - dark mode only site */
 }
+/* Theme toggle hover removed - dark mode only */
 .theme-toggle:hover{
-    transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(16,24,40,0.15);
+    display: none !important; /* Hidden - dark mode only site */
 }
 body.theme-dark .theme-toggle{
     background: #0b1224;
