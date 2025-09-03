@@ -315,11 +315,9 @@
             }
 
             @media (max-width: 768px) {
-                /* Reserve right side for video; prevent overlap */
-                .hero-banner-v1 { --video-w: 240px; }
-                .hero-banner-v1 .hero-content { text-align: left; max-width: calc(100% - var(--video-w) - 32px); margin-left: 16px; }
-                .hero-banner-v1 .hero-img.hero-img-two { position: absolute !important; top: 50% !important; right: max(24px, env(safe-area-inset-right)) !important; bottom: auto !important; left: auto !important; transform: translateY(-50%) !important; margin: 0 !important; z-index: 0 !important; max-width: var(--video-w) !important; }
-                .hero-banner-v1 .hero-img.hero-img-two video { width: 100% !important; height: auto !important; max-width: 100% !important; border-radius: 16px; }
+                /* Show video on mobile too, but centered and sized */
+                .hero-banner-v1 .hero-img.hero-img-two { display: block !important; position: relative !important; bottom: auto !important; right: auto !important; margin: 8px auto 0 !important; }
+                .hero-banner-v1 .hero-img.hero-img-two video { transform: none !important; max-width: 85vw !important; width: 100% !important; height: auto !important; border-radius: 16px; }
             }
 
             /* Enhanced hover effects for Let's Talk button */
@@ -1300,10 +1298,10 @@ AstrifTech LLP was founded by four passionate innovators with a mission to make 
                                 <div class="newsletter-content">
                                     <h3>Get In Touch</h3>
                                     <p>We'd love to hear from you</p>
-                                    <form>
+                                    <form name="newsletter" method="POST" data-netlify="true" action="/thank-you.html">
                                         <div class="form_group">
-                                            <input type="Send us a message" class="form_control" placeholder="Email Address" name="email" required>
-                                            <button class="main-btn">Send</button>
+                                            <input type="email" class="form_control" placeholder="Email Address" name="email" required>
+                                            <button type="submit" class="main-btn">Send</button>
                                         </div>
                                     </form>
                                 </div>
