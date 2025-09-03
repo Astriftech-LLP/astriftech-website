@@ -453,7 +453,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="contact-form">
-                                    <form>
+                                    <form name="contact" method="POST" data-netlify="true" action="/thank-you.html">
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form_group">
@@ -477,7 +477,7 @@
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="form_group text-center">
-                                                    <button class="main-btn">Send Us Message</button>
+                                                    <button type="submit" class="main-btn">Send Us Message</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -529,10 +529,10 @@
                                 <div class="newsletter-content">
                                     <h3>Get In Touch</h3>
                                     <p>We'd love to hear from you</p>
-                                    <form>
+                                    <form name="newsletter" method="POST" data-netlify="true">
                                         <div class="form_group">
-                                            <input type="Send us a message" class="form_control" placeholder="Email Address" name="email" required>
-                                            <button class="main-btn">Send</button>
+                                            <input type="email" class="form_control" placeholder="Email Address" name="email" required>
+                                            <button type="submit" class="main-btn">Send</button>
                                         </div>
                                     </form>
                                 </div>
