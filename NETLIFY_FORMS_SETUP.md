@@ -9,18 +9,18 @@ Your website now has **2 types of forms** integrated with Netlify Forms:
 ## What's Been Updated
 
 ### Files Updated:
-- ✅ `contact.html` - Main contact form + footer newsletter form with auto-response
-- ✅ `index.html` - Footer newsletter form with auto-response
-- ✅ `service-details.html` - Footer newsletter form with auto-response
-- ✅ `team.html` - Footer newsletter form with auto-response
-- ✅ `blogs.html` - Footer newsletter form with auto-response
-- ✅ `blog-details.html` - Footer newsletter form with auto-response
-- ✅ `privacy-policy.html` - Footer newsletter form with auto-response
-- ✅ `terms-of-service.html` - Footer newsletter form with auto-response
-- ✅ `Nihal_details.html` - Footer newsletter form with auto-response
-- ✅ `Rohith K_details.html` - Footer newsletter form with auto-response
-- ✅ `Shreyas_details.html` - Footer newsletter form with auto-response
-- ✅ `Likitha N_details.html` - Footer newsletter form with auto-response
+- ✅ `contact.html` - Main contact form + footer newsletter form
+- ✅ `index.html` - Footer newsletter form
+- ✅ `service-details.html` - Footer newsletter form
+- ✅ `team.html` - Footer newsletter form
+- ✅ `blogs.html` - Footer newsletter form
+- ✅ `blog-details.html` - Footer newsletter form
+- ✅ `privacy-policy.html` - Footer newsletter form
+- ✅ `terms-of-service.html` - Footer newsletter form
+- ✅ `Nihal_details.html` - Footer newsletter form
+- ✅ `Rohith K_details.html` - Footer newsletter form
+- ✅ `Shreyas_details.html` - Footer newsletter form
+- ✅ `Likitha N_details.html` - Footer newsletter form
 - ✅ `thank-you.html` - New custom success page
 
 ### Form Changes:
@@ -30,9 +30,6 @@ Your website now has **2 types of forms** integrated with Netlify Forms:
 - Added `action="/thank-you.html"` for custom success page
 - Fixed input types (email validation)
 - Added `type="submit"` to buttons
-- **✅ NEW: Added automatic email responses to newsletter subscribers**
-- **✅ NEW: Professional welcome email with services list**
-- **✅ NEW: "From Team AstrifTech" branding in auto-responses**
 
 ## Deployment Instructions
 
@@ -81,23 +78,13 @@ For automatic email responses to users, you can integrate with:
 }
 ```
 
-### Newsletter Form (`name="newsletter"`) - WITH AUTO-RESPONSE
+### Newsletter Form (`name="newsletter"`)
 ```json
 {
   "form-name": "newsletter",
-  "email": "user@example.com",
-  "subject": "Welcome to AstrifTech - Your Tech Transformation Partner!",
-  "auto-reply": "Professional welcome email with services list"
+  "email": "user@example.com"
 }
 ```
-
-**Auto-Response Email Content:**
-- Welcome message from Team AstrifTech
-- Complete list of your 4 main services (AI, Web Dev, Digital Marketing, Consulting)
-- Call-to-action with Calendly link and contact info
-- Social media links
-- Professional branding with company tagline
-- Contact information and location
 
 ## Testing Forms
 
@@ -119,10 +106,6 @@ Forms will only work after deploying to Netlify. Local testing won't submit to N
 ✅ **Real-time Notifications** - Get instant email alerts
 ✅ **API Access** - Programmatic access to form data
 ✅ **Analytics** - Track form performance
-✅ **🆕 Automatic User Emails** - Professional welcome messages sent instantly
-✅ **🆕 Service Showcase** - Every subscriber gets your complete service list
-✅ **🆕 Lead Nurturing** - Professional first impression with clear CTAs
-✅ **🆕 Brand Consistency** - "Team AstrifTech" messaging across all touchpoints
 
 ## Monitoring & Analytics
 
