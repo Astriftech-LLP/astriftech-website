@@ -8,18 +8,33 @@
 
     // Disable text selection
     function disableTextSelection() {
-        // Disable text selection via JavaScript
-        document.onselectstart = function() {
+        // Disable text selection via JavaScript (but allow for form elements)
+        document.onselectstart = function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || 
+                e.target.classList.contains('form_control') ||
+                e.target.closest('form')) {
+                return true;
+            }
             return false;
         };
         
-        // Disable text selection in Mozilla Firefox
-        document.onmousedown = function() {
+        // Disable text selection in Mozilla Firefox (but allow for form elements)
+        document.onmousedown = function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || 
+                e.target.classList.contains('form_control') ||
+                e.target.closest('form') ||
+                e.target.tagName === 'BUTTON') {
+                return true;
+            }
             return false;
         };
         
-        // Disable drag
-        document.ondragstart = function() {
+        // Disable drag (but allow for form elements)
+        document.ondragstart = function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || 
+                e.target.classList.contains('form_control')) {
+                return true;
+            }
             return false;
         };
     }
@@ -35,6 +50,12 @@
     // Disable keyboard shortcuts for copy/select all
     function disableKeyboardShortcuts() {
         document.addEventListener('keydown', function(e) {
+            // Allow shortcuts in form elements
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || 
+                e.target.classList.contains('form_control')) {
+                return true;
+            }
+            
             // Disable Ctrl+A (Select All)
             if (e.ctrlKey && e.key === 'a') {
                 e.preventDefault();
