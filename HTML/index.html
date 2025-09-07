@@ -1298,9 +1298,11 @@ AstrifTech LLP was founded by four passionate innovators with a mission to make 
                                 <div class="newsletter-content">
                                     <h3>Get In Touch</h3>
                                     <p>We'd love to hear from you</p>
-                                    <form name="newsletter" method="POST" data-netlify="true" action="/thank-you.html">
+                                    <form name="newsletter" method="POST" data-netlify="true" action="/.netlify/functions/form-handler">
+                                        <input type="hidden" name="form_name" value="newsletter">
                                         <div class="form_group">
                                             <input type="email" class="form_control" placeholder="Email Address" name="email" required>
+                                            <input type="text" class="form_control" placeholder="Your Name (Optional)" name="name" style="margin-top: 10px;">
                                             <button type="submit" class="main-btn">Send</button>
                                         </div>
                                     </form>
@@ -1348,5 +1350,7 @@ AstrifTech LLP was founded by four passionate innovators with a mission to make 
         <!--====== Main js ======-->
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/dark-mode.js"></script>
+    <!--====== Disable Text Selection ======-->
+    <script src="assets/js/disable-selection.js"></script>
     </body>
 </html>
