@@ -381,6 +381,19 @@
     }
     
     .hero-banner-v1 .hero-content h1 {
+
+/* Final mobile overrides: ensure first sections clear fixed blurred header */
+@media (max-width: 991.98px) {
+    .blend-header + section { margin-top: 68px !important; }
+    .transparent-header + .coming-soon-section { margin-top: 68px !important; }
+}
+@media (max-width: 575.98px) {
+    .blend-header + section { margin-top: 80px !important; }
+    .transparent-header + .coming-soon-section { margin-top: 80px !important; }
+    .services-intro,
+    .team-intro,
+    .contact-intro { padding-top: 128px !important; }
+}
         font-size: 32px !important; /* Increased from 28px */
         line-height: 36px !important; /* Increased from 32px */
         margin-bottom: 10px !important; /* Reduced from 12px */
@@ -690,6 +703,22 @@
     .testimonial-area-v4 .testimonial-item .testimonial-content p {
         font-size: 18px;
         line-height: 30px;
+    }
+}
+
+/* Mobile-only spacing for CTA buttons on Services page (and similar CTA sections) */
+@media (max-width: 575.98px) {
+    /* Stack buttons vertically with a small gap and reset desktop right margin */
+    .cta-area .cta-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .cta-area .cta-buttons .main-btn {
+        margin-right: 0 !important;
+    }
+    .cta-area .cta-buttons a + a {
+        margin-top: 12px !important;
     }
 }
 @media (max-width: 400px){
