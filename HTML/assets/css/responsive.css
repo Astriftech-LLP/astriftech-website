@@ -218,6 +218,13 @@
         line-height: 65px;
     }
 }
+
+/* Ensure inputs remain interactive on all breakpoints */
+@media (max-width: 991px) {
+    input, textarea, select, button, .form_control, form {
+        pointer-events: auto !important;
+    }
+}
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .section-title h2{
         font-size: 45px;

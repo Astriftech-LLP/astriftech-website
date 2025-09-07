@@ -109,6 +109,14 @@
     // Document Ready
     $(document).ready(function() {
         mainMenu();
+
+        // Ensure footer social links always open in a new tab
+        try {
+            document.querySelectorAll('footer .social-nav a').forEach(function(a){
+                a.setAttribute('target','_blank');
+                a.setAttribute('rel','noopener noreferrer');
+            });
+        } catch (e) { /* no-op */ }
     });
 
     //===== Prealoder

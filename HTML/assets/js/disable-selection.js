@@ -3,147 +3,56 @@
  * Prevents users from selecting text and right-clicking on the website
  */
 
-(function() {
+(function () {
     'use strict';
 
-    // Disable text selection
-    function disableTextSelection() {
-        // Disable text selection via JavaScript (but allow for form elements)
-        document.onselectstart = function(e) {
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || 
-                e.target.classList.contains('form_control') ||
-                e.target.closest('form')) {
-                return true;
-            }
-            return false;
-        };
-        
-        // Disable text selection in Mozilla Firefox (but allow for form elements)
-        document.onmousedown = function(e) {
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || 
-                e.target.classList.contains('form_control') ||
-                e.target.closest('form') ||
-                e.target.tagName === 'BUTTON') {
-                return true;
-            }
-            return false;
-        };
-        
-        // Disable drag (but allow for form elements)
-        document.ondragstart = function(e) {
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || 
-                e.target.classList.contains('form_control')) {
-                return true;
-            }
-            return false;
-        };
+    // Utility: detect interactive targets
+    function isInteractive(el) {
+        if (!el) return false;
+        if (el.closest('input, textarea, select, button, [contenteditable="true"], .form_control, form')) return true;
+        const tag = el.tagName;
+        return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || tag === 'BUTTON';
     }
 
-    // Disable right-click context menu
-    function disableContextMenu() {
-        document.addEventListener('contextmenu', function(e) {
+    // Keep: block context menu (but never on inputs)
+    function initContextMenuGuard() {
+        document.addEventListener('contextmenu', function (e) {
+            if (isInteractive(e.target)) return; // allow right-click in inputs
             e.preventDefault();
-            return false;
         });
     }
 
-    // Disable keyboard shortcuts for copy/select all
-    function disableKeyboardShortcuts() {
-        document.addEventListener('keydown', function(e) {
-            // Allow shortcuts in form elements
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || 
-                e.target.classList.contains('form_control')) {
-                return true;
-            }
-            
-            // Disable Ctrl+A (Select All)
-            if (e.ctrlKey && e.key === 'a') {
-                e.preventDefault();
-                return false;
-            }
-            
-            // Disable Ctrl+C (Copy)
-            if (e.ctrlKey && e.key === 'c') {
-                e.preventDefault();
-                return false;
-            }
-            
-            // Disable Ctrl+V (Paste) - optional
-            if (e.ctrlKey && e.key === 'v') {
-                e.preventDefault();
-                return false;
-            }
-            
-            // Disable Ctrl+X (Cut)
-            if (e.ctrlKey && e.key === 'x') {
-                e.preventDefault();
-                return false;
-            }
-            
-            // Disable F12 (Developer Tools) - optional
-            if (e.key === 'F12') {
-                e.preventDefault();
-                return false;
-            }
-            
-            // Disable Ctrl+Shift+I (Developer Tools) - optional
-            if (e.ctrlKey && e.shiftKey && e.key === 'I') {
-                e.preventDefault();
-                return false;
-            }
-            
-            // Disable Ctrl+U (View Source) - optional
-            if (e.ctrlKey && e.key === 'u') {
-                e.preventDefault();
-                return false;
-            }
-        });
-    }
+    // Keep: block some shortcuts outside inputs only
+    function initKeyboardGuards() {
+        document.addEventListener('keydown', function (e) {
+            if (isInteractive(e.target)) return; // never block while typing
 
-    // Disable text selection on mobile devices
-    function disableMobileSelection() {
-        document.addEventListener('touchstart', function(e) {
-            if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+            const k = e.key?.toLowerCase();
+            const mod = (c) => (e.ctrlKey || e.metaKey) && k === c;
+
+            if (mod('a') || mod('c') || mod('v') || mod('x') || mod('u')) {
+                e.preventDefault();
+            }
+            if (k === 'f12' || (e.ctrlKey && e.shiftKey && k === 'i')) {
                 e.preventDefault();
             }
         });
     }
 
-    // Initialize all text selection prevention methods
+    // Remove aggressive selection/drag suppression that caused input blur.
+    // We rely on CSS for selection restrictions and avoid JS that interferes with focus.
+
     function init() {
-        // Wait for DOM to be ready
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                disableTextSelection();
-                disableContextMenu();
-                disableKeyboardShortcuts();
-                disableMobileSelection();
+            document.addEventListener('DOMContentLoaded', function () {
+                initContextMenuGuard();
+                initKeyboardGuards();
             });
         } else {
-            disableTextSelection();
-            disableContextMenu();
-            disableKeyboardShortcuts();
-            disableMobileSelection();
+            initContextMenuGuard();
+            initKeyboardGuards();
         }
     }
 
-    // Start the initialization
     init();
-
-    // Additional protection - Clear any existing selections
-    function clearSelection() {
-        if (window.getSelection) {
-            if (window.getSelection().empty) {
-                window.getSelection().empty();
-            } else if (window.getSelection().removeAllRanges) {
-                window.getSelection().removeAllRanges();
-            }
-        } else if (document.selection) {
-            document.selection.empty();
-        }
-    }
-
-    // Clear selection periodically (optional - for extra protection)
-    setInterval(clearSelection, 1000);
-
 })();

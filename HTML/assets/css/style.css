@@ -81,20 +81,8 @@
             box-sizing: border-box;
 }
 
-/* Disable text selection across the entire website */
-*,
-*::before,
-*::after {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* Disable text selection on specific elements */
-body, p, h1, h2, h3, h4, h5, h6, span, div, section, article {
+/* Keep selection disabled on general content, but do NOT affect form controls */
+body :not(input):not(textarea):not(select):not(button):not([contenteditable="true"]) {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -2196,28 +2184,25 @@ body.theme-dark .blend-header .header-navigation.sticky{
 /* Page Banner */
 
 .page-banner{
+    position: relative;
     padding: 120px 0 80px !important;
-    background-image: linear-gradient(90deg, rgb(89,86,233) 0%, rgb(0,208,156) 100%);
+    background: linear-gradient(90deg, rgb(89,86,233) 0%, rgb(0,208,156) 100%);
 }
 .page-banner:after{
+    content: "";
     position: absolute;
-                padding: 160px 0 72px !important;
+    top: 0;
     left: 0;
-    content: '';
+    right: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, rgb(89,86,233) 0%, rgb(0,208,156) 100%);
-                padding: 150px 0 64px !important;
     z-index: -1;
 }
 .page-banner .shape{
     position: absolute;
     z-index: -1;
-
-/* Normalize scaling on small screens to avoid fixed-header vs content misalignment */
-@media (max-width: 767.98px) {
-    body { zoom: 1 !important; }
-}
 }
 .page-banner .shape.shape-one{
     top: 165px;
