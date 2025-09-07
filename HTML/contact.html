@@ -458,7 +458,9 @@
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form_group">
-                                                    <input type="text" class="form_control" placeholder="Full Name" name="name" required>
+                                                    <input type="text" class="form_control" placeholder="Full Name" name="name" required 
+                                                           pattern="[A-Za-z\s]+" title="Please enter letters and spaces only"
+                                                           oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')">
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
@@ -468,7 +470,9 @@
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form_group">
-                                                    <input type="text" class="form_control" placeholder="Phone Number" name="phone" required>
+                                                    <input type="tel" class="form_control" placeholder="Phone Number" name="phone" required 
+                                                           pattern="[0-9+\-\s()]+" title="Please enter numbers, +, -, spaces, and parentheses only"
+                                                           oninput="this.value = this.value.replace(/[^0-9+\-\s()]/g, '')">
                                                 </div>
                                             </div>
                                             <div class="col-lg-12">
